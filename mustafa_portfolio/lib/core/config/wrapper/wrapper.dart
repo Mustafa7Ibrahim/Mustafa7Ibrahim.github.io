@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mustafa_portfolio/modules/home/views/home.dart';
+import 'package:responsive_framework/responsive_breakpoints.dart';
 
 ///
 class Wrapper extends HookWidget {
@@ -28,7 +29,7 @@ class Wrapper extends HookWidget {
           child: Row(
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
+                width: ResponsiveBreakpoints.of(context).isDesktop ? 300 : 150,
                 child: Text(
                   'MUSTAFAIX',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -37,23 +38,29 @@ class Wrapper extends HookWidget {
                 ),
               ),
               const Spacer(),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
-                child: TabBar(
-                  isScrollable: true,
-                  controller: controller,
-                  indicatorColor: Colors.transparent,
-                  onTap: controller.animateTo,
-                  dividerColor: Colors.transparent,
-                  tabs: const [
-                    Tab(text: 'ABOUT ME'),
-                    Tab(text: 'RESUME'),
-                    Tab(text: 'PROJECTS'),
-                    Tab(text: 'BLOG'),
-                    Tab(text: 'CONTACT'),
-                  ],
+              if (ResponsiveBreakpoints.of(context).isDesktop)
+                SizedBox(
+                  width: 420,
+                  child: TabBar(
+                    isScrollable: true,
+                    controller: controller,
+                    indicatorColor: Colors.transparent,
+                    onTap: controller.animateTo,
+                    dividerColor: Colors.transparent,
+                    tabs: const [
+                      Tab(text: 'ABOUT ME'),
+                      Tab(text: 'RESUME'),
+                      Tab(text: 'PROJECTS'),
+                      Tab(text: 'BLOG'),
+                      Tab(text: 'CONTACT'),
+                    ],
+                  ),
+                )
+              else
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.menu),
                 ),
-              ),
             ],
           ),
         ),

@@ -60,19 +60,13 @@ class AppTheme {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(designRadius),
             ),
-            padding: const EdgeInsets.all(12),
-            textStyle: GoogleFonts.cairo(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: designPadding),
             shadowColor: const Color(0xff6C5DD3),
-            elevation: 4,
+            elevation: 0,
             foregroundColor: Colors.white,
-            minimumSize: Size(width, 55),
-            maximumSize: Size(width, 56),
             disabledForegroundColor: Colors.white,
             disabledBackgroundColor: const Color(0xff94A3B8),
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: AppColors.blueColor,
           ),
         ),
         cupertinoOverrideTheme: CupertinoThemeData(
@@ -130,12 +124,9 @@ class AppTheme {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(designRadius),
             ),
-            side: BorderSide(color: AppColors.primaryColor),
-            padding: const EdgeInsets.all(12),
-            textStyle:
-                GoogleFonts.cairo(fontSize: 16, color: AppColors.primaryColor),
-            foregroundColor: AppColors.primaryColor,
-            minimumSize: Size(width, 48),
+            side: const BorderSide(),
+            padding: EdgeInsets.symmetric(horizontal: designPadding),
+            foregroundColor: Colors.black,
           ),
         ),
         colorScheme: ColorScheme(
