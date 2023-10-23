@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Mustafa IX',
+      title: 'Mustafa Ibrahim',
       theme: AppTheme.appTheme,
       debugShowCheckedModeBanner: false,
       routerConfig: RouteConfig.router,

@@ -60,7 +60,10 @@ class AppTheme {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(designRadius),
             ),
-            padding: EdgeInsets.symmetric(horizontal: designPadding),
+            padding: EdgeInsets.symmetric(
+              horizontal: designPadding * 1.5,
+              vertical: designPaddingCenter,
+            ),
             shadowColor: const Color(0xff6C5DD3),
             elevation: 0,
             foregroundColor: Colors.white,
@@ -124,8 +127,11 @@ class AppTheme {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(designRadius),
             ),
+            padding: EdgeInsets.symmetric(
+              horizontal: designPadding,
+              vertical: designPaddingCenter,
+            ),
             side: const BorderSide(),
-            padding: EdgeInsets.symmetric(horizontal: designPadding),
             foregroundColor: Colors.black,
           ),
         ),
