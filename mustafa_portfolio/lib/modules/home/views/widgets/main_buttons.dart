@@ -27,6 +27,9 @@ class MainButtons extends StatelessWidget {
                   'assets/Mustafa_Ibrahim_Resume.pdf',
                 );
               },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.all(18),
+              ),
               child: const Text('RESUME'),
             ),
             designPaddingCenter.pw,
@@ -34,6 +37,9 @@ class MainButtons extends StatelessWidget {
               onPressed: () {
                 tabController.animateTo(2);
               },
+              style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.all(18),
+              ),
               child: const Text('PROJECTS'),
             ),
           ],

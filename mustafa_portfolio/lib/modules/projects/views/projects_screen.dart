@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mustafa_portfolio/core/assets/assets.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
 import 'package:mustafa_portfolio/core/core_data/my_data_model.dart';
 import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
@@ -262,6 +263,25 @@ class ProjectTile extends HookWidget {
                                       ),
                                       8.pw,
                                       const Text('Github'),
+                                    ],
+                                  ),
+                                ),
+                              if (project.pubDevLink != null)
+                                OutlinedButton(
+                                  onPressed: () {
+                                    launchLink(project.pubDevLink!);
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Image.asset(
+                                        Assets.dartLogo,
+                                        fit: BoxFit.contain,
+                                        height: 14,
+                                        width: 14,
+                                      ),
+                                      8.pw,
+                                      const Text('Pub.dev'),
                                     ],
                                   ),
                                 ),

@@ -80,7 +80,10 @@ class ResumeScreen extends HookWidget {
                                       'assets/Mustafa_Ibrahim_Resume.pdf',
                                     );
                                   },
-                                  child: const Text('Download CV'),
+                                  style: ElevatedButton.styleFrom(
+                                    padding: const EdgeInsets.all(18),
+                                  ),
+                                  child: const Text('Download Resume'),
                                 ),
                               ],
                             ),

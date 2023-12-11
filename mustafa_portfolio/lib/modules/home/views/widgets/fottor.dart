@@ -60,7 +60,7 @@ class Footer extends StatelessWidget {
                             'Call',
                           ),
                           designPaddingCenter.ph,
-                          const Text(
+                          const SelectableText(
                             '+201116613745\n',
                           ),
                         ],
@@ -75,7 +75,7 @@ class Footer extends StatelessWidget {
                             'Write',
                           ),
                           designPaddingCenter.ph,
-                          const Text(
+                          const SelectableText(
                             'Mustafa7ibrahim@gmail.com',
                           ),
                         ],
@@ -123,7 +123,7 @@ class FooterItem extends StatelessWidget {
           title,
         ),
         designPaddingCenter.ph,
-        Text(
+        SelectableText(
           value,
         ),
       ],

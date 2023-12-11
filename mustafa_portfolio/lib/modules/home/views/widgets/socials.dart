@@ -1,6 +1,7 @@
 import 'package:easix/easix.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mustafa_portfolio/core/assets/assets.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
@@ -29,6 +30,18 @@ class Socials extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
+                launchLink('https://pub.dev/publishers/mustafaix.me/packages');
+              },
+              child: Image.asset(
+                Assets.dartLogo,
+                fit: BoxFit.contain,
+                height: isFooter ? 18 : 20,
+                width: isFooter ? 18 : 20,
+              ),
+            ),
+            designPadding.pw,
+            InkWell(
+              onTap: () {
                 launchLink('https://github.com/Mustafa7Ibrahim/');
               },
               child: FaIcon(
@@ -43,6 +56,7 @@ class Socials extends StatelessWidget {
               },
               child: FaIcon(
                 FontAwesomeIcons.linkedin,
+                color: AppColors.blueColor,
                 size: isFooter ? 18 : 20,
               ),
             ),
@@ -52,7 +66,7 @@ class Socials extends StatelessWidget {
                 launchLink('https://twitter.com/Mustafa7Ibrahim/');
               },
               child: FaIcon(
-                FontAwesomeIcons.twitter,
+                FontAwesomeIcons.xTwitter,
                 size: isFooter ? 18 : 20,
               ),
             ),
