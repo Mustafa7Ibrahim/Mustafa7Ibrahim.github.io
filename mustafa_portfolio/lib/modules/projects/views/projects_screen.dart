@@ -10,6 +10,7 @@ import 'package:mustafa_portfolio/core/core_data/my_data_model.dart';
 import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/fottor.dart';
 import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 /// projects screen
 class ProjectsScreen extends HookWidget {
@@ -113,7 +114,7 @@ class ProjectTile extends HookWidget {
   Widget build(BuildContext context) {
     final pageController = usePageController();
     return Container(
-      height: 350,
+      height: ResponsiveBreakpoints.of(context).isDesktop ? 350 : 600,
       margin: const EdgeInsets.all(32),
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
@@ -125,243 +126,251 @@ class ProjectTile extends HookWidget {
           ),
         ],
       ),
-      child: Row(
+      child: ResponsiveRowColumn(
+        layout: ResponsiveBreakpoints.of(context).isDesktop
+            ? ResponsiveRowColumnType.ROW
+            : ResponsiveRowColumnType.COLUMN,
         children: [
-          Expanded(
-            flex: 3,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 44,
-                      width: 8,
-                      color: AppColors.blueColor,
-                    ),
-                    24.pw,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          project.name,
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.blueColor,
-                          ),
-                        ),
-                        4.ph,
-                        const Text(
-                          'Flutter Application Developer',
-                          style: TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                24.ph,
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+          ResponsiveRowColumnItem(
+            child: Expanded(
+              flex: 3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
                     children: [
-                      Text(
-                        project.description,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      Container(
+                        height: 44,
+                        width: 8,
+                        color: AppColors.blueColor,
                       ),
-                      24.ph,
-                      Wrap(
-                        alignment: WrapAlignment.center,
-                        spacing: 14,
-                        runSpacing: 14,
+                      24.pw,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Visibility(
-                            visible: project.appStoreLink != null,
-                            replacement: const SizedBox(),
-                            child: OutlinedButton(
-                              onPressed: () {
-                                launchLink(project.appStoreLink!);
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const FaIcon(
-                                    FontAwesomeIcons.appStore,
-                                    color: Colors.blue,
-                                    size: 14,
-                                  ),
-                                  8.pw,
-                                  const Text('View Project'),
-                                ],
-                              ),
+                          Text(
+                            project.name,
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.blueColor,
                             ),
                           ),
-                          Visibility(
-                            visible: project.googlePlayLink != null,
-                            replacement: const SizedBox(),
-                            child: OutlinedButton(
-                              onPressed: () {
-                                launchLink(project.googlePlayLink!);
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const FaIcon(
-                                    FontAwesomeIcons.googlePlay,
-                                    color: Colors.green,
-                                    size: 14,
-                                  ),
-                                  8.pw,
-                                  const Text('View Project'),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Visibility(
-                            visible: project.appGalleryLink != null,
-                            replacement: const SizedBox(),
-                            child: OutlinedButton(
-                              onPressed: () {
-                                launchLink(project.appGalleryLink!);
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const FaIcon(
-                                    FontAwesomeIcons.appStoreIos,
-                                    color: Colors.green,
-                                    size: 14,
-                                  ),
-                                  8.pw,
-                                  const Text('View Project'),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Visibility(
-                            visible: project.githubLink != null,
-                            replacement: const SizedBox(),
-                            child: OutlinedButton(
-                              onPressed: () {
-                                launchLink(project.githubLink!);
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const FaIcon(
-                                    FontAwesomeIcons.github,
-                                    size: 14,
-                                  ),
-                                  8.pw,
-                                  const Text('View Project'),
-                                ],
-                              ),
+                          4.ph,
+                          Text(
+                            project.header ?? '',
+                            style: const TextStyle(
+                              fontSize: 12,
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
-                ),
-                24.ph,
-              ],
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: SizedBox(
-              height: 350,
-              child: Stack(
-                children: [
-                  PageView.builder(
-                    controller: pageController,
-                    itemCount: project.images.length,
-                    itemBuilder: (context, imageIndex) {
-                      return Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image:
-                                    ExactAssetImage(project.images[imageIndex]),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0),
+                  24.ph,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          project.description,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        24.ph,
+                        Wrap(
+                          alignment: WrapAlignment.center,
+                          spacing: 14,
+                          runSpacing: 14,
+                          children: [
+                            Visibility(
+                              visible: project.appStoreLink != null,
+                              replacement: const SizedBox(),
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  launchLink(project.appStoreLink!);
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const FaIcon(
+                                      FontAwesomeIcons.appStoreIos,
+                                      color: Colors.blue,
+                                      size: 14,
+                                    ),
+                                    8.pw,
+                                    const Text('App Store'),
+                                  ],
                                 ),
                               ),
                             ),
-                          ),
-                          Image.asset(
-                            project.images[imageIndex],
-                            fit: BoxFit.fitHeight,
-                            height: 350,
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                  Positioned(
-                    left: 0,
-                    bottom: 8,
-                    child: IconButton(
-                      focusColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      splashColor: Colors.transparent,
-                      icon: const Icon(
-                        Icons.arrow_back_ios_rounded,
-                        color: Colors.black87,
-                        size: 18,
-                      ),
-                      onPressed: () {
-                        pageController.previousPage(
-                          duration: const Duration(
-                            milliseconds: 300,
-                          ),
-                          curve: Curves.easeInOut,
-                        );
-                      },
+                            Visibility(
+                              visible: project.googlePlayLink != null,
+                              replacement: const SizedBox(),
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  launchLink(project.googlePlayLink!);
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const FaIcon(
+                                      FontAwesomeIcons.googlePlay,
+                                      size: 14,
+                                    ),
+                                    8.pw,
+                                    const Text('Google Play'),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: project.appGalleryLink != null,
+                              replacement: const SizedBox(),
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  launchLink(project.appGalleryLink!);
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const FaIcon(
+                                      FontAwesomeIcons.store,
+                                      color: Colors.red,
+                                      size: 14,
+                                    ),
+                                    8.pw,
+                                    const Text('App Gallery'),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Visibility(
+                              visible: project.githubLink != null,
+                              replacement: const SizedBox(),
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  launchLink(project.githubLink!);
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const FaIcon(
+                                      FontAwesomeIcons.github,
+                                      size: 14,
+                                    ),
+                                    8.pw,
+                                    const Text('Github'),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  Positioned(
-                    right: 0,
-                    bottom: 8,
-                    child: IconButton(
-                      focusColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      splashColor: Colors.transparent,
-                      icon: const Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        color: Colors.black87,
-                        size: 18,
-                      ),
-                      onPressed: () {
-                        pageController.nextPage(
-                          duration: const Duration(
-                            milliseconds: 300,
-                          ),
-                          curve: Curves.easeInOut,
-                        );
-                      },
-                    ),
-                  ),
+                  24.ph,
                 ],
+              ),
+            ),
+          ),
+          ResponsiveRowColumnItem(
+            child: Expanded(
+              flex: ResponsiveBreakpoints.of(context).isDesktop ? 2 : 3,
+              child: SizedBox(
+                height: 350,
+                child: Stack(
+                  children: [
+                    PageView.builder(
+                      controller: pageController,
+                      itemCount: project.images.length,
+                      itemBuilder: (context, imageIndex) {
+                        return Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: ExactAssetImage(
+                                    project.images[imageIndex],
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: BackdropFilter(
+                                filter:
+                                    ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Image.asset(
+                              project.images[imageIndex],
+                              fit: BoxFit.fitHeight,
+                              height: 350,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    Positioned(
+                      left: 0,
+                      bottom: 8,
+                      child: IconButton(
+                        focusColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        icon: const Icon(
+                          Icons.arrow_back_ios_rounded,
+                          color: Colors.black87,
+                          size: 18,
+                        ),
+                        onPressed: () {
+                          pageController.previousPage(
+                            duration: const Duration(
+                              milliseconds: 300,
+                            ),
+                            curve: Curves.easeInOut,
+                          );
+                        },
+                      ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 8,
+                      child: IconButton(
+                        focusColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        icon: const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: Colors.black87,
+                          size: 18,
+                        ),
+                        onPressed: () {
+                          pageController.nextPage(
+                            duration: const Duration(
+                              milliseconds: 300,
+                            ),
+                            curve: Curves.easeInOut,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

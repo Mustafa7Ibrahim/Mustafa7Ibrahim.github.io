@@ -18,6 +18,7 @@ class Portfolio {
     required this.projects,
     required this.education,
     required this.certifications,
+    required this.articles,
   });
 
   /// Creates a new instance of the [Portfolio] class from a JSON object.
@@ -49,6 +50,10 @@ class Portfolio {
       certifications: List<Certification>.from(
         (json['certifications'] as List<dynamic>)
             .map((e) => Certification.fromJson(e as Map<String, dynamic>)),
+      ),
+      articles: List<Article>.from(
+        (json['articles'] as List<dynamic>)
+            .map((e) => Article.fromJson(e as Map<String, dynamic>)),
       ),
     );
   }
@@ -95,6 +100,9 @@ class Portfolio {
 
   /// The list of certifications of the portfolio owner.
   List<Certification> certifications;
+
+  /// The list of articles of the portfolio owner.
+  List<Article> articles;
 }
 
 /// Represents the contact information of a portfolio owner.
@@ -202,10 +210,12 @@ class Project {
   Project({
     required this.name,
     required this.description,
+    required this.header,
     required this.googlePlayLink,
     required this.appStoreLink,
     required this.githubLink,
     required this.appGalleryLink,
+    required this.pubDevLink,
     required this.images,
   });
 
@@ -214,8 +224,10 @@ class Project {
     return Project(
       name: json['name'] as String,
       description: json['description'] as String,
+      header: json['header'] as String?,
       googlePlayLink: json['google_play_link'] as String?,
       appStoreLink: json['app_store_link'] as String?,
+      pubDevLink: json['pub_dev_link'] as String?,
       appGalleryLink: json['app_gallery_link'] as String?,
       githubLink: json['github_link'] as String?,
       images: List<String>.from(json['images'] as List<dynamic>),
@@ -228,6 +240,9 @@ class Project {
   /// The description of the project.
   String description;
 
+  /// header of the project
+  String? header;
+
   /// The Google Play Store link of the project (if applicable).
   String? googlePlayLink;
 
@@ -236,6 +251,9 @@ class Project {
 
   /// app gallery link
   String? appGalleryLink;
+
+  /// pub.dev link
+  String? pubDevLink;
 
   /// The GitHub repository link of the project.
   String? githubLink;
@@ -324,4 +342,42 @@ class Certification {
 
   /// The date when the certification was obtained.
   String date;
+}
+
+/// Represents an article.
+class Article {
+  /// Creates a new instance of the [Article] class.
+  Article({
+    required this.name,
+    required this.description,
+    required this.devToLink,
+    required this.hashnodeLink,
+    required this.mediumLink,
+  });
+
+  /// Creates a new instance of the [Article] class from a JSON object.
+  factory Article.fromJson(Map<String, dynamic> json) {
+    return Article(
+      name: json['name'] as String,
+      description: json['description'] as String,
+      devToLink: json['dev_to_link'] as String?,
+      hashnodeLink: json['hashnode_link'] as String?,
+      mediumLink: json['medium_link'] as String?,
+    );
+  }
+
+  /// The name of the article.
+  final String name;
+
+  /// The description of the article.
+  final String description;
+
+  /// The link to the article on dev.to.
+  final String? devToLink;
+
+  /// The link to the article on Hashnode.
+  final String? hashnodeLink;
+
+  /// The link to the article on Medium.
+  final String? mediumLink;
 }

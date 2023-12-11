@@ -1,6 +1,5 @@
 import 'package:easix/easix.dart';
 import 'package:flutter/material.dart';
-import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/main_buttons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -8,18 +7,29 @@ import 'package:responsive_framework/responsive_framework.dart';
 ///
 class MyInfoText extends StatelessWidget {
   ///
-  const MyInfoText({super.key});
+  const MyInfoText({required this.tabController, super.key});
+
+  /// tab controller
+  final TabController tabController;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ResponsiveBreakpoints.of(context).isDesktop
-          ? size.width * 0.5
-          : double.infinity,
-      padding: EdgeInsets.all(designPadding),
-      color: (ResponsiveBreakpoints.of(context).isDesktop)
-          ? null
-          : AppColors.primaryColor,
+      constraints: const BoxConstraints(
+        maxWidth: 600,
+        minHeight: 500,
+      ),
+      padding: const EdgeInsets.all(44),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 10,
+            spreadRadius: 5,
+          ),
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,7 +49,10 @@ class MyInfoText extends StatelessWidget {
                 ?.copyWith(fontWeight: FontWeight.w500),
           ),
           designPadding.ph,
-          if (ResponsiveBreakpoints.of(context).isDesktop) const MainButtons(),
+          if (ResponsiveBreakpoints.of(context).isDesktop)
+            MainButtons(
+              tabController: tabController,
+            ),
           Text(
             '''
 With a B.CompSC degree from New Cairo Academy and two Udemy certifications, I have a strong foundation in computer science and mobile app development. I am proficient in Flutter and Dart, a cross-platform framework and language that enable fast and beautiful app creation.

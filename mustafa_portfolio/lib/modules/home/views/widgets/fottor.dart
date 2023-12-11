@@ -35,12 +35,8 @@ class Footer extends StatelessWidget {
                 designPadding.pw,
                 Column(
                   children: [
-                    Text(
+                    const Text(
                       'Follow',
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                          ),
                     ),
                     designPaddingCenter.ph,
                     const Socials(isFooter: true),
@@ -60,26 +56,12 @@ class Footer extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Call',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.copyWith(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                ),
                           ),
                           designPaddingCenter.ph,
-                          Text(
+                          const Text(
                             '+201116613745\n',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w300,
-                                ),
                           ),
                         ],
                       ),
@@ -89,26 +71,12 @@ class Footer extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Write',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.copyWith(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                ),
                           ),
                           designPaddingCenter.ph,
-                          Text(
+                          const Text(
                             'Mustafa7ibrahim@gmail.com',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w300,
-                                ),
                           ),
                         ],
                       ),
@@ -116,22 +84,14 @@ class Footer extends StatelessWidget {
                   ],
                 ),
                 designPaddingCenter.ph,
-                Text(
+                const Text(
                   'Follow',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
                 ),
                 designPaddingCenter.ph,
                 const Socials(isFooter: true),
                 designPadding.ph,
-                Text(
+                const Text(
                   '© 2023 Mustafa Ibrahim All Rights Reserved',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w300,
-                      ),
                 ),
               ],
             ),
@@ -161,18 +121,10 @@ class FooterItem extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-              ),
         ),
         designPaddingCenter.ph,
         Text(
           value,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.black,
-                fontWeight: FontWeight.w300,
-              ),
         ),
       ],
     );

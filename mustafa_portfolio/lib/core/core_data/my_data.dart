@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 /// all my data as a json object
 final myData = {
   'name': 'Mustafa Ibrahim',
@@ -63,7 +65,31 @@ final myData = {
       'Passionate Flutter developer with a focus on creating innovative and user-friendly mobile applications. Here are some of my featured projects:',
   'projects': [
     {
+      'name': 'Easix',
+      'header': 'Flutter Package',
+      'description':
+          'Easix is a Flutter package designed to simplify common tasks related to form field validation and provide helpful extensions for working with dates, times, widgets, and error handling. With Easix, you can streamline the development of your Flutter applications, making your code more efficient and maintainable.',
+      'pub_dev_link': 'https://pub.dev/packages/easix',
+      'github_link': 'https://github.com/Mustafa7Ibrahim/easix',
+      'images': [
+        'assets/easix.png',
+      ],
+    },
+    {
+      'name': 'Enhanced Paginated View',
+      'header': 'Flutter Package',
+      'description':
+          'Enhanced Paginated View is an unopinionated, extensible, and highly customizable package that provides a widget for lazy loading and displaying small chunks of items as the user scrolls down the screen. It is commonly used for implementing features like endless scrolling pagination, auto-pagination, lazy loading pagination, and progressive loading pagination.',
+      'pub_dev_link': 'https://pub.dev/packages/enhanced_paginated_view',
+      'github_link':
+          'https://github.com/Mustafa7Ibrahim/enhanced_paginated_view',
+      'images': [
+        'assets/plv.png',
+      ],
+    },
+    {
       'name': 'Bund App',
+      'header': 'Flutter Application Developer',
       'description':
           'A Finance Banking App that showcases financial innovation. As the developer, I led the implementation of features, ensuring a seamless user experience.',
       'google_play_link':
@@ -79,6 +105,7 @@ final myData = {
     },
     {
       'name': 'Lemon Spaces',
+      'header': 'Flutter Application Developer',
       'description':
           'A Finance Banking App that showcases financial innovation. As the developer, I led the implementation of features, ensuring a seamless user experience.',
       'google_play_link':
@@ -98,6 +125,7 @@ final myData = {
     },
     {
       'name': 'Draya',
+      'header': 'Flutter Application Developer',
       'description':
           "Salesmen App for Draya Company. This project involved revolutionizing the sales process through the development of a dedicated app. As the lead developer, I ensured the app met the client's needs.",
       'google_play_link': null,
@@ -111,7 +139,8 @@ final myData = {
       ],
     },
     {
-      'name': 'We gomla',
+      'name': 'We Gomla',
+      'header': 'Flutter Application Developer',
       'description':
           'E-commerce App designed for We for Trading and Distribution. As the Flutter Developer, I played a key role in crafting an efficient and user-friendly e-commerce solution.',
       'google_play_link':
@@ -129,6 +158,8 @@ final myData = {
     },
     // {
     //   'name': 'Headhunt',
+    // 'header': 'Flutter Application Developer',
+
     //   'description':
     //       'Ushers and Event Managers App designed to streamline event management. I led the development, ensuring a smooth collaboration between ushers and event managers.',
     //   'google_play_link': 'https://play.google.com/store/apps/headhunt',
@@ -172,6 +203,22 @@ final myData = {
       'name': 'Developing Android Apps with Kotlin',
       'provider': 'Udacity',
       'date': 'June 2020',
+    }
+  ],
+  'articles': [
+    {
+      'name': 'Enhanced Paginated View: Simplifying Pagination in Flutter',
+      'description': '''
+As developers, we often come across scenarios where we need to implement paginated views in our Flutter apps. Pagination is essential when dealing with large datasets to optimize performance and provide a better user experience. However, managing the loading state, handling errors, and efficiently displaying the paginated content can become a cumbersome task.
+
+Introducing Enhanced Paginated View, a Flutter package that streamlines the process of building paginated views, making it easy and efficient for developers to handle paginated content effortlessly.
+''',
+      'dev_to_link':
+          'https://dev.to/mustafa7ibrahim/enhanced-paginated-view-simplifying-pagination-in-flutter-4gbc',
+      'hashnode_link':
+          'https://mustafa7ibrahim.hashnode.dev/enhanced-paginated-view-simplifying-pagination-in-flutter',
+      'medium_link':
+          'https://medium.com/@mustafa7ibrahim/enhanced-paginated-view-simplifying-pagination-in-flutter-1a9bfbb10bc9',
     }
   ],
 };

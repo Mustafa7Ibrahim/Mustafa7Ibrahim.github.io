@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
+import 'package:mustafa_portfolio/modules/articles/views/articles_screen.dart';
 import 'package:mustafa_portfolio/modules/home/views/home.dart';
 import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
 import 'package:mustafa_portfolio/modules/projects/views/projects_screen.dart';
@@ -17,14 +18,14 @@ class Wrapper extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useTabController(initialLength: 5);
+    final controller = useTabController(initialLength: 4);
 
     final pages = useMemoized(() {
       return [
-        const HomeView(),
+        HomeView(tabController: controller),
         const ResumeScreen(),
         const ProjectsScreen(),
-        const Center(child: Text('BLOG')),
+        const ArticlesScreen(),
         // const Center(child: Text('CONTACT')),
       ];
     });
@@ -41,9 +42,6 @@ class Wrapper extends HookWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
-                      width: ResponsiveBreakpoints.of(context).isDesktop
-                          ? 400
-                          : 300,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -71,9 +69,6 @@ class Wrapper extends HookWidget {
                       ),
                     ),
                     SizedBox(
-                      width: ResponsiveBreakpoints.of(context).isDesktop
-                          ? 300
-                          : 150,
                       child: Text(
                         'Flutter Developer',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -97,7 +92,7 @@ class Wrapper extends HookWidget {
                         Tab(text: 'ABOUT ME'),
                         Tab(text: 'RESUME'),
                         Tab(text: 'PROJECTS'),
-                        Tab(text: 'BLOG'),
+                        Tab(text: 'ARTICLES'),
                         // Tab(text: 'CONTACT'),
                       ],
                     ),
@@ -125,7 +120,7 @@ class Wrapper extends HookWidget {
                         ),
                         PopupMenuItem(
                           value: 3,
-                          child: Text('BLOG'),
+                          child: Text('ARTICLES'),
                         ),
                         // PopupMenuItem(
                         //   value: 4,

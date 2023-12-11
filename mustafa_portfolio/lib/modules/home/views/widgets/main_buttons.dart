@@ -1,11 +1,15 @@
 import 'package:easix/easix.dart';
 import 'package:flutter/material.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
+import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
 
 /// main buttons for resume and projects
 class MainButtons extends StatelessWidget {
   /// main buttons
-  const MainButtons({super.key});
+  const MainButtons({required this.tabController, super.key});
+
+  /// tab controller
+  final TabController tabController;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +22,18 @@ class MainButtons extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                downloadFile(
+                  'assets/Mustafa_Ibrahim_Resume.pdf',
+                );
+              },
               child: const Text('RESUME'),
             ),
             designPaddingCenter.pw,
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                tabController.animateTo(2);
+              },
               child: const Text('PROJECTS'),
             ),
           ],

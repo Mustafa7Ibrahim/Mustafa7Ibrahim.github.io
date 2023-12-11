@@ -11,32 +11,24 @@ import 'package:responsive_framework/responsive_framework.dart';
 class MyInfo extends StatelessWidget {
   /// my info widget
   const MyInfo({
+    required this.tabController,
     super.key,
   });
+
+  /// tab controller
+  final TabController tabController;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        if (!ResponsiveBreakpoints.of(context).isDesktop)
-          Column(
-            children: [
-              Container(
-                height: size.height * 0.3,
-                width: double.infinity,
-                color: AppColors.backgroundColor,
-              ),
-              Container(
-                height: size.height * 0.34,
-                width: double.infinity,
-                color: AppColors.primaryColor,
-              ),
-            ],
-          ),
         Container(
-          width: size.height * 0.4,
-          height: size.height * 0.6,
+          constraints: const BoxConstraints(
+            maxWidth: 350,
+            minHeight: 300,
+            maxHeight: 555,
+          ),
           decoration: BoxDecoration(
             color: AppColors.surfaceColor,
             boxShadow: [
@@ -54,7 +46,6 @@ class MyInfo extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(
@@ -62,8 +53,8 @@ class MyInfo extends StatelessWidget {
                       ),
                       child: Image.asset(
                         Assets.me,
-                        width: size.height * 0.2,
-                        height: size.height * 0.2,
+                        width: 200,
+                        height: 200,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -99,7 +90,9 @@ class MyInfo extends StatelessWidget {
                             ),
                       )
                     else
-                      const MainButtons(),
+                      MainButtons(
+                        tabController: tabController,
+                      ),
                   ],
                 ),
               ),
