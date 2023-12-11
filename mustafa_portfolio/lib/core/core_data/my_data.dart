@@ -140,18 +140,23 @@ final myData = {
     //   ],
     // }
   ],
-  'education': {
-    'degree': 'Bachelor of Computer Science - BCS',
-    'school': 'New Cairo Academy',
-    'location': 'Cairo, Egypt',
-    'major': 'Computer Science',
-    'gpa': 3.12,
-    'relevant_courses': [
-      'Mobile Application Development',
-      'Object-Oriented Programming',
-      'Data Structures and Algorithms',
-    ],
-  },
+  'education': [
+    {
+      'degree': 'Bachelor of Computer Science - BCS',
+      'school': 'New Cairo Academy',
+      'location': 'Cairo, Egypt',
+      'major': 'Computer Science',
+      'gpa': 3.12,
+      'duration': 'October 2017 - June 2021',
+      'description':
+          'BCS graduate from New Cairo Academy, Egypt, with a GPA of 3.12. Specialized in Computer Science, covering key subjects like Mobile App Development, OOP, and Data Structures. Solid foundation in computer science and mobile app development.',
+      'relevant_courses': [
+        'Mobile Application Development',
+        'Object-Oriented Programming',
+        'Data Structures and Algorithms',
+      ],
+    }
+  ],
   'certifications': [
     {
       'name': 'The Complete 2021 Flutter & Dart Development Course',

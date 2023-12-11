@@ -7,6 +7,7 @@ import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/modules/home/views/home.dart';
 import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
 import 'package:mustafa_portfolio/modules/projects/views/projects_screen.dart';
+import 'package:mustafa_portfolio/modules/resume/views/resume_screen.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
 
 ///
@@ -21,7 +22,7 @@ class Wrapper extends HookWidget {
     final pages = useMemoized(() {
       return [
         const HomeView(),
-        const Center(child: Text('RESUME')),
+        const ResumeScreen(),
         const ProjectsScreen(),
         const Center(child: Text('BLOG')),
         // const Center(child: Text('CONTACT')),

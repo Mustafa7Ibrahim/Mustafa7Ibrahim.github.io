@@ -42,7 +42,10 @@ class Portfolio {
         (json['projects'] as List<dynamic>)
             .map((e) => Project.fromJson(e as Map<String, dynamic>)),
       ),
-      education: Education.fromJson(json['education'] as Map<String, dynamic>),
+      education: List<Education>.from(
+        (json['education'] as List<dynamic>)
+            .map((e) => Education.fromJson(e as Map<String, dynamic>)),
+      ),
       certifications: List<Certification>.from(
         (json['certifications'] as List<dynamic>)
             .map((e) => Certification.fromJson(e as Map<String, dynamic>)),
@@ -88,7 +91,7 @@ class Portfolio {
   List<Project> projects;
 
   /// The education information of the portfolio owner.
-  Education education;
+  List<Education> education;
 
   /// The list of certifications of the portfolio owner.
   List<Certification> certifications;
@@ -250,6 +253,8 @@ class Education {
     required this.location,
     required this.major,
     required this.gpa,
+    required this.duration,
+    required this.description,
     required this.relevantCourses,
   });
 
@@ -260,6 +265,8 @@ class Education {
       school: json['school'] as String,
       location: json['location'] as String,
       major: json['major'] as String,
+      duration: json['duration'] as String,
+      description: json['description'] as String,
       gpa: (json['gpa'] as num).toDouble(),
       relevantCourses:
           List<String>.from(json['relevant_courses'] as List<dynamic>),
@@ -280,6 +287,12 @@ class Education {
 
   /// The GPA (Grade Point Average) of the portfolio owner.
   double gpa;
+
+  /// The description of the education.
+  String description;
+
+  /// The duration of the education.
+  String duration;
 
   /// The list of relevant courses taken by the portfolio owner.
   List<String> relevantCourses;
