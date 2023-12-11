@@ -12,6 +12,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       padding: EdgeInsets.all(designPadding),
       child: ResponsiveBreakpoints.of(context).isDesktop
           ? Row(

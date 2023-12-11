@@ -66,3 +66,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/bund/
+    - assets/deraya/
+    - assets/lemon/
+    - assets/we/

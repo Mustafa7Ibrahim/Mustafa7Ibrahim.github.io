@@ -1,9 +1,12 @@
 import 'package:easix/easix.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/modules/home/views/home.dart';
+import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
+import 'package:mustafa_portfolio/modules/projects/views/projects_screen.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
 
 ///
@@ -19,9 +22,9 @@ class Wrapper extends HookWidget {
       return [
         const HomeView(),
         const Center(child: Text('RESUME')),
-        const Center(child: Text('PROJECTS')),
+        const ProjectsScreen(),
         const Center(child: Text('BLOG')),
-        const Center(child: Text('CONTACT')),
+        // const Center(child: Text('CONTACT')),
       ];
     });
     return Scaffold(
@@ -94,7 +97,7 @@ class Wrapper extends HookWidget {
                         Tab(text: 'RESUME'),
                         Tab(text: 'PROJECTS'),
                         Tab(text: 'BLOG'),
-                        Tab(text: 'CONTACT'),
+                        // Tab(text: 'CONTACT'),
                       ],
                     ),
                   )
@@ -123,10 +126,10 @@ class Wrapper extends HookWidget {
                           value: 3,
                           child: Text('BLOG'),
                         ),
-                        PopupMenuItem(
-                          value: 4,
-                          child: Text('CONTACT'),
-                        ),
+                        // PopupMenuItem(
+                        //   value: 4,
+                        //   child: Text('CONTACT'),
+                        // ),
                       ];
                     },
                   ),
@@ -135,11 +138,14 @@ class Wrapper extends HookWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: TabBarView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: controller,
-          children: pages,
+      body: BlocProvider(
+        create: (context) => PortfolioBloc()..add(const LoadPortfolioEvent()),
+        child: SafeArea(
+          child: TabBarView(
+            physics: const NeverScrollableScrollPhysics(),
+            controller: controller,
+            children: pages,
+          ),
         ),
       ),
     );
