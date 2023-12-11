@@ -134,150 +134,145 @@ class ProjectTile extends HookWidget {
           ResponsiveRowColumnItem(
             child: Expanded(
               flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 44,
-                        width: 8,
-                        color: AppColors.blueColor,
-                      ),
-                      24.pw,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            project.name,
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.blueColor,
-                            ),
-                          ),
-                          4.ph,
-                          Text(
-                            project.header ?? '',
-                            style: const TextStyle(
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  24.ph,
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 24,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
                       children: [
-                        Text(
-                          project.description,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
+                        Container(
+                          height: 44,
+                          width: 8,
+                          color: AppColors.blueColor,
                         ),
-                        24.ph,
-                        Wrap(
-                          alignment: WrapAlignment.center,
-                          spacing: 14,
-                          runSpacing: 14,
+                        24.pw,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Visibility(
-                              visible: project.appStoreLink != null,
-                              replacement: const SizedBox(),
-                              child: OutlinedButton(
-                                onPressed: () {
-                                  launchLink(project.appStoreLink!);
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const FaIcon(
-                                      FontAwesomeIcons.appStoreIos,
-                                      color: Colors.blue,
-                                      size: 14,
-                                    ),
-                                    8.pw,
-                                    const Text('App Store'),
-                                  ],
-                                ),
+                            Text(
+                              project.name,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.blueColor,
                               ),
                             ),
-                            Visibility(
-                              visible: project.googlePlayLink != null,
-                              replacement: const SizedBox(),
-                              child: OutlinedButton(
-                                onPressed: () {
-                                  launchLink(project.googlePlayLink!);
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const FaIcon(
-                                      FontAwesomeIcons.googlePlay,
-                                      size: 14,
-                                    ),
-                                    8.pw,
-                                    const Text('Google Play'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Visibility(
-                              visible: project.appGalleryLink != null,
-                              replacement: const SizedBox(),
-                              child: OutlinedButton(
-                                onPressed: () {
-                                  launchLink(project.appGalleryLink!);
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const FaIcon(
-                                      FontAwesomeIcons.store,
-                                      color: Colors.red,
-                                      size: 14,
-                                    ),
-                                    8.pw,
-                                    const Text('App Gallery'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Visibility(
-                              visible: project.githubLink != null,
-                              replacement: const SizedBox(),
-                              child: OutlinedButton(
-                                onPressed: () {
-                                  launchLink(project.githubLink!);
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const FaIcon(
-                                      FontAwesomeIcons.github,
-                                      size: 14,
-                                    ),
-                                    8.pw,
-                                    const Text('Github'),
-                                  ],
-                                ),
+                            4.ph,
+                            Text(
+                              project.header ?? '',
+                              style: const TextStyle(
+                                fontSize: 12,
                               ),
                             ),
                           ],
                         ),
                       ],
                     ),
-                  ),
-                  24.ph,
-                ],
+                    24.ph,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            project.description,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          24.ph,
+                          Wrap(
+                            alignment: WrapAlignment.center,
+                            runAlignment: WrapAlignment.center,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            spacing: 14,
+                            runSpacing: 14,
+                            children: [
+                              if (project.appStoreLink != null)
+                                OutlinedButton(
+                                  onPressed: () {
+                                    launchLink(project.appStoreLink!);
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const FaIcon(
+                                        FontAwesomeIcons.appStoreIos,
+                                        color: Colors.blue,
+                                        size: 14,
+                                      ),
+                                      8.pw,
+                                      const Text('App Store'),
+                                    ],
+                                  ),
+                                ),
+                              if (project.googlePlayLink != null)
+                                OutlinedButton(
+                                  onPressed: () {
+                                    launchLink(project.googlePlayLink!);
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const FaIcon(
+                                        FontAwesomeIcons.googlePlay,
+                                        size: 14,
+                                      ),
+                                      8.pw,
+                                      const Text('Google Play'),
+                                    ],
+                                  ),
+                                ),
+                              if (project.appGalleryLink != null)
+                                OutlinedButton(
+                                  onPressed: () {
+                                    launchLink(project.appGalleryLink!);
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const FaIcon(
+                                        FontAwesomeIcons.store,
+                                        color: Colors.red,
+                                        size: 14,
+                                      ),
+                                      8.pw,
+                                      const Text('App Gallery'),
+                                    ],
+                                  ),
+                                ),
+                              if (project.githubLink != null)
+                                OutlinedButton(
+                                  onPressed: () {
+                                    launchLink(project.githubLink!);
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const FaIcon(
+                                        FontAwesomeIcons.github,
+                                        size: 14,
+                                      ),
+                                      8.pw,
+                                      const Text('Github'),
+                                    ],
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    24.ph,
+                  ],
+                ),
               ),
             ),
           ),

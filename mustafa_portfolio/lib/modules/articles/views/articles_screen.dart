@@ -160,10 +160,8 @@ class ArticleTile extends HookWidget {
                     spacing: 14,
                     runSpacing: 14,
                     children: [
-                      Visibility(
-                        visible: article.devToLink != null,
-                        replacement: const SizedBox(),
-                        child: OutlinedButton(
+                      if (article.devToLink != null)
+                        OutlinedButton(
                           onPressed: () {
                             launchLink(article.devToLink!);
                           },
@@ -179,11 +177,8 @@ class ArticleTile extends HookWidget {
                             ],
                           ),
                         ),
-                      ),
-                      Visibility(
-                        visible: article.hashnodeLink != null,
-                        replacement: const SizedBox(),
-                        child: OutlinedButton(
+                      if (article.hashnodeLink != null)
+                        OutlinedButton(
                           onPressed: () {
                             launchLink(article.hashnodeLink!);
                           },
@@ -199,11 +194,8 @@ class ArticleTile extends HookWidget {
                             ],
                           ),
                         ),
-                      ),
-                      Visibility(
-                        visible: article.mediumLink != null,
-                        replacement: const SizedBox(),
-                        child: OutlinedButton(
+                      if (article.mediumLink != null)
+                        OutlinedButton(
                           onPressed: () {
                             launchLink(article.mediumLink!);
                           },
@@ -219,7 +211,6 @@ class ArticleTile extends HookWidget {
                             ],
                           ),
                         ),
-                      ),
                     ],
                   ),
                 ),

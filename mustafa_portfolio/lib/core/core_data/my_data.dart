@@ -79,7 +79,7 @@ final myData = {
       'name': 'Enhanced Paginated View',
       'header': 'Flutter Package',
       'description':
-          'Enhanced Paginated View is an unopinionated, extensible, and highly customizable package that provides a widget for lazy loading and displaying small chunks of items as the user scrolls down the screen. It is commonly used for implementing features like endless scrolling pagination, auto-pagination, lazy loading pagination, and progressive loading pagination.',
+          "Enhanced Paginated View is a flexible Flutter package for lazy loading and paginating items as users scroll. Ideal for features like endless scrolling, auto-pagination, and lazy loading. With customizable options, it's perfect for implementing smooth and efficient item loading experiences in your app.",
       'pub_dev_link': 'https://pub.dev/packages/enhanced_paginated_view',
       'github_link':
           'https://github.com/Mustafa7Ibrahim/enhanced_paginated_view',
@@ -154,6 +154,21 @@ final myData = {
         'assets/we/we2.jpg',
         'assets/we/we3.jpg',
         'assets/we/we4.jpg',
+      ],
+    },
+    {
+      'name': 'Fazaker',
+      'header': 'Flutter Application Developer',
+      'description':
+          "Fazaker: Your all-in-one Islamic companion. Get accurate prayer times, explore the Quran, and find peace in Azkar and Duas. With a user-friendly interface, it's your guide to a seamless and enriched spiritual journey.",
+      'images': [
+        'assets/fazaker/fa1.jpeg',
+        'assets/fazaker/fa2.jpeg',
+        'assets/fazaker/fa3.jpeg',
+        'assets/fazaker/fa4.jpeg',
+        'assets/fazaker/fa5.jpeg',
+        'assets/fazaker/fa6.jpeg',
+        'assets/fazaker/fa7.jpeg',
       ],
     },
     // {
