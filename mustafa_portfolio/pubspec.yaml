@@ -40,7 +40,7 @@ dependencies:
   firebase_auth: ^4.16.0
   firebase_storage: ^11.6.0
   firebase_database: ^10.4.0
-  universal_web_image: ^0.1.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

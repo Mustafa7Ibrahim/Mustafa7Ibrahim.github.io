@@ -29,7 +29,7 @@ class Portfolio {
       bio: json['bio'] as String,
       image: json['image'] as String,
       contact: Contact.fromJson(json['contact'] as Map<String, dynamic>),
-      skills: List<String>.from(json['skills'] as List<String>),
+      skills: List.from(json['skills'] as List),
       languages: List<Language>.from(
         (json['languages'] as List<dynamic>)
             .map((e) => Language.fromJson(e as Map<String, dynamic>)),

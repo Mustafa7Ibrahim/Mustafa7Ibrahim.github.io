@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easix/easix.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -113,7 +114,6 @@ class ProjectTile extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pageController = usePageController();
     return Container(
       height: ResponsiveBreakpoints.of(context).isDesktop ? 350 : 600,
       margin: const EdgeInsets.all(32),
@@ -134,7 +134,7 @@ class ProjectTile extends HookWidget {
         children: [
           ResponsiveRowColumnItem(
             child: Expanded(
-              flex: 3,
+              flex: 5,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 24,
@@ -298,93 +298,43 @@ class ProjectTile extends HookWidget {
           ),
           ResponsiveRowColumnItem(
             child: Expanded(
-              flex: ResponsiveBreakpoints.of(context).isDesktop ? 2 : 3,
+              flex: ResponsiveBreakpoints.of(context).isDesktop ? 3 : 6,
               child: SizedBox(
                 height: 350,
-                child: Stack(
-                  children: [
-                    PageView.builder(
-                      controller: pageController,
-                      itemCount: project.images.length,
-                      itemBuilder: (context, imageIndex) {
-                        return Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: ExactAssetImage(
-                                    project.images[imageIndex],
-                                  ),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              child: BackdropFilter(
-                                filter:
-                                    ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Image.asset(
-                              project.images[imageIndex],
-                              fit: BoxFit.fitHeight,
-                              height: 350,
-                            ),
-                          ],
-                        );
-                      },
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(project.images.last),
+                      fit: BoxFit.fill,
                     ),
-                    Positioned(
-                      left: 0,
-                      bottom: 8,
-                      child: IconButton(
-                        focusColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        icon: const Icon(
-                          Icons.arrow_back_ios_rounded,
-                          color: Colors.black87,
-                          size: 18,
+                  ),
+                  child: ClipRRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.3),
                         ),
-                        onPressed: () {
-                          pageController.previousPage(
-                            duration: const Duration(
-                              milliseconds: 300,
-                            ),
-                            curve: Curves.easeInOut,
-                          );
-                        },
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                            height: 350,
+                            viewportFraction: 1,
+                            autoPlay: project.images.length > 1,
+                            scrollPhysics: const NeverScrollableScrollPhysics(),
+                          ),
+                          items: project.images
+                              .map(
+                                (e) => Image.network(
+                                  e,
+                                  fit: BoxFit.fitHeight,
+                                  height: 350,
+                                ),
+                              )
+                              .toList(),
+                        ),
                       ),
                     ),
-                    Positioned(
-                      right: 0,
-                      bottom: 8,
-                      child: IconButton(
-                        focusColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        icon: const Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          color: Colors.black87,
-                          size: 18,
-                        ),
-                        onPressed: () {
-                          pageController.nextPage(
-                            duration: const Duration(
-                              milliseconds: 300,
-                            ),
-                            curve: Curves.easeInOut,
-                          );
-                        },
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
