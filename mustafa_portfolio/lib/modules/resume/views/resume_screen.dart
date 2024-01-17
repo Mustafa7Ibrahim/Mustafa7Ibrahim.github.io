@@ -76,9 +76,11 @@ class ResumeScreen extends HookWidget {
                                 const Spacer(),
                                 ElevatedButton(
                                   onPressed: () {
-                                    downloadFile(
-                                      'assets/Mustafa_Ibrahim_Resume.pdf',
-                                    );
+                                    final link = state.portfolio?.cv;
+                                    if (link == null) {
+                                      return;
+                                    }
+                                    downloadFileFromWeb(link);
                                   },
                                   style: ElevatedButton.styleFrom(
                                     padding: const EdgeInsets.all(18),

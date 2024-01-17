@@ -19,12 +19,14 @@ class Portfolio {
     required this.education,
     required this.certifications,
     required this.articles,
+    required this.cv,
   });
 
   /// Creates a new instance of the [Portfolio] class from a JSON object.
   factory Portfolio.fromJson(Map<String, dynamic> json) {
     return Portfolio(
       name: json['name'] as String,
+      cv: json['cv'] as String,
       title: json['title'] as String,
       bio: json['bio'] as String,
       image: json['image'] as String,
@@ -67,6 +69,9 @@ class Portfolio {
 
   /// The name of the portfolio owner.
   String name;
+
+  /// cv link
+  String cv;
 
   /// The title of the portfolio owner.
   String title;

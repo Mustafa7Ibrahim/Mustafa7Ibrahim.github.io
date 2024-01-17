@@ -28,3 +28,12 @@ Future<void> downloadFile(String assetPath) async {
 
   html.Url.revokeObjectUrl(url);
 }
+
+/// download file from web
+void downloadFileFromWeb(String url) {
+  html.AnchorElement(href: url)
+    ..target = 'webbrowser'
+    ..download = url
+    ..click();
+  html.Url.revokeObjectUrl(url);
+}
