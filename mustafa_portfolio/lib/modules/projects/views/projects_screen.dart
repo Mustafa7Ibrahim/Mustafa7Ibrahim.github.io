@@ -328,6 +328,15 @@ class ProjectTile extends HookWidget {
                                   e,
                                   fit: BoxFit.fitHeight,
                                   height: 350,
+                                  loadingBuilder: (context, child, loading) {
+                                    if (loading == null) {
+                                      return child;
+                                    }
+                                    return const Center(
+                                      child:
+                                          CircularProgressIndicator.adaptive(),
+                                    );
+                                  },
                                 ),
                               )
                               .toList(),
