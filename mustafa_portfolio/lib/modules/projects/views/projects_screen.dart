@@ -1,19 +1,12 @@
-import 'dart:ui';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easix/easix.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mustafa_portfolio/core/assets/assets.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
-import 'package:mustafa_portfolio/core/core_data/my_data_model.dart';
-import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/fottor.dart';
 import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
 import 'package:mustafa_portfolio/modules/projects/views/widgets/project_tile.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 /// projects screen
 class ProjectsScreen extends HookWidget {
