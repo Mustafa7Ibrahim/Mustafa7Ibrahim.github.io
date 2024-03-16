@@ -20,59 +20,62 @@ class HomeView extends HookWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: SingleChildScrollView(
-        child: ResponsiveBreakpoints.of(context).isDesktop
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(44),
-                    constraints: BoxConstraints(
-                      minHeight: size.height,
-                      minWidth: size.width,
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Spacer(),
-                        MyInfo(
-                          tabController: tabController,
-                        ),
-                        34.pw,
-                        MyInfoText(
-                          tabController: tabController,
-                        ),
-                        const Spacer(),
-                      ],
-                    ),
+      body: ListView(
+        children: [
+          if (ResponsiveBreakpoints.of(context).isDesktop)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(44),
+                  constraints: BoxConstraints(
+                    minHeight: size.height,
+                    minWidth: size.width,
                   ),
-                  const Footer(),
-                ],
-              )
-            : Column(
-                children: [
-                  Container(
-                    constraints: BoxConstraints(
-                      minHeight: size.height,
-                      minWidth: size.width,
-                    ),
-                    margin: const EdgeInsets.all(44),
-                    child: Column(
-                      children: [
-                        MyInfo(
-                          tabController: tabController,
-                        ),
-                        34.ph,
-                        MyInfoText(
-                          tabController: tabController,
-                        ),
-                      ],
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      MyInfo(
+                        tabController: tabController,
+                      ),
+                      34.pw,
+                      MyInfoText(
+                        tabController: tabController,
+                      ),
+                      const Spacer(),
+                    ],
                   ),
-                  const Footer(),
-                ],
-              ),
+                ),
+                const Footer(),
+              ],
+            )
+          else
+            Column(
+              children: [
+                Container(
+                  constraints: BoxConstraints(
+                    minHeight: size.height,
+                    minWidth: size.width,
+                  ),
+                  margin: const EdgeInsets.all(44),
+                  child: Column(
+                    children: [
+                      MyInfo(
+                        tabController: tabController,
+                      ),
+                      34.ph,
+                      MyInfoText(
+                        tabController: tabController,
+                      ),
+                    ],
+                  ),
+                ),
+                const Footer(),
+              ],
+            ),
+        ],
       ),
     );
   }
