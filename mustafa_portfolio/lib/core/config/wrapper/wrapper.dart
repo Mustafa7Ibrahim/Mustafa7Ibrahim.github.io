@@ -9,7 +9,7 @@ import 'package:mustafa_portfolio/modules/home/views/home.dart';
 import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
 import 'package:mustafa_portfolio/modules/projects/views/projects_screen.dart';
 import 'package:mustafa_portfolio/modules/resume/views/resume_screen.dart';
-import 'package:responsive_framework/responsive_breakpoints.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 ///
 class Wrapper extends HookWidget {
