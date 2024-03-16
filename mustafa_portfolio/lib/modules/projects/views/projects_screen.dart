@@ -23,68 +23,70 @@ class ProjectsScreen extends HookWidget {
               child: CircularProgressIndicator(),
             );
           }
-          return ListView(
-            children: [
-              Center(
-                child: FittedBox(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minWidth: 300,
-                      maxWidth: 700,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        44.ph,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 18,
-                              width: 18,
-                              color: AppColors.blueColor,
-                            ),
-                            12.pw,
-                            const Text(
-                              'Projects',
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                Center(
+                  child: FittedBox(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        minWidth: 300,
+                        maxWidth: 700,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          44.ph,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 18,
+                                width: 18,
+                                color: AppColors.blueColor,
                               ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 54,
-                            vertical: 14,
+                              12.pw,
+                              const Text(
+                                'Projects',
+                                style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                          child: Text(
-                            state.portfolio?.portfolioHeader ?? '',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 54,
+                              vertical: 14,
                             ),
-                            textAlign: TextAlign.center,
+                            child: Text(
+                              state.portfolio?.portfolioHeader ?? '',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-                        ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: state.portfolio?.projects.length,
-                          itemBuilder: (context, index) {
-                            return ProjectTile(
-                              project: state.portfolio!.projects[index],
-                            );
-                          },
-                        ),
-                      ],
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: state.portfolio?.projects.length,
+                            itemBuilder: (context, index) {
+                              return ProjectTile(
+                                project: state.portfolio!.projects[index],
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const Footer(),
-            ],
+                const Footer(),
+              ],
+            ),
           );
         },
       ),
