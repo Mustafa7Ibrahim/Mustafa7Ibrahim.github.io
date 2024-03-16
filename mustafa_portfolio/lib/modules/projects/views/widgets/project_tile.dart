@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easix/easix.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,6 +26,7 @@ class ProjectTile extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final carouselController = useMemoized(CarouselController.new);
     return Container(
       margin: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -225,6 +227,7 @@ class ProjectTile extends HookWidget {
                           color: Colors.black.withOpacity(0.3),
                         ),
                         child: CarouselSlider(
+                          carouselController: carouselController,
                           options: CarouselOptions(
                             height: 370,
                             viewportFraction: 1,
@@ -233,17 +236,48 @@ class ProjectTile extends HookWidget {
                           ),
                           items: project.images.map(
                             (e) {
-                              return CachedNetworkImage(
-                                imageUrl: e,
-                                fit: BoxFit.fitHeight,
-                                progressIndicatorBuilder:
-                                    (context, url, downloadProgress) => Center(
-                                  child: CircularProgressIndicator(
-                                    value: downloadProgress.progress,
+                              return InkWell(
+                                onTap: () {
+                                  final multiImageProvider = MultiImageProvider(
+                                    [...project.images.map(NetworkImage.new)],
+                                    initialIndex: project.images.indexOf(e),
+                                  );
+
+                                  showImageViewerPager(
+                                    context,
+                                    multiImageProvider,
+                                    doubleTapZoomable: true,
+                                    onPageChanged: (page) {
+                                      carouselController.animateToPage(
+                                        page,
+                                        duration:
+                                            const Duration(milliseconds: 300),
+                                        curve: Curves.easeInOut,
+                                      );
+                                    },
+                                    onViewerDismissed: (page) {
+                                      carouselController.animateToPage(
+                                        page,
+                                        duration:
+                                            const Duration(milliseconds: 300),
+                                        curve: Curves.easeInOut,
+                                      );
+                                    },
+                                  );
+                                },
+                                child: CachedNetworkImage(
+                                  imageUrl: e,
+                                  fit: BoxFit.fitHeight,
+                                  progressIndicatorBuilder:
+                                      (context, url, downloadProgress) =>
+                                          Center(
+                                    child: CircularProgressIndicator(
+                                      value: downloadProgress.progress,
+                                    ),
                                   ),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
                                 ),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
                               );
                             },
                           ).toList(),
