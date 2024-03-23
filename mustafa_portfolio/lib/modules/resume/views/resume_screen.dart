@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
+import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/core/core_data/my_data_model.dart';
 import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/fottor.dart';
 import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 /// projects screen
 class ResumeScreen extends HookWidget {
@@ -159,8 +159,11 @@ class ExperienceTile extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ResponsiveBreakpoints.of(context).isDesktop ? 220 : 300,
       margin: const EdgeInsets.all(32),
+      padding: EdgeInsets.only(
+        top: designPaddingCenter,
+        bottom: designPaddingCenter,
+      ),
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
         boxShadow: [
@@ -171,17 +174,15 @@ class ExperienceTile extends HookWidget {
           ),
         ],
       ),
-      child: ResponsiveRowColumn(
-        layout: ResponsiveBreakpoints.of(context).isDesktop
-            ? ResponsiveRowColumnType.ROW
-            : ResponsiveRowColumnType.COLUMN,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ResponsiveRowColumnItem(
-            child: Expanded(
-              flex: 2,
+          Expanded(
+            flex: 4,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: designPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
                     children: [
@@ -213,7 +214,7 @@ class ExperienceTile extends HookWidget {
                       ),
                     ],
                   ),
-                  24.ph,
+                  12.ph,
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 30,
@@ -228,7 +229,7 @@ class ExperienceTile extends HookWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        24.ph,
+                        12.ph,
                         Text(
                           experience.location,
                           style: const TextStyle(
@@ -243,20 +244,18 @@ class ExperienceTile extends HookWidget {
               ),
             ),
           ),
-          ResponsiveRowColumnItem(
-            child: Expanded(
-              flex: ResponsiveBreakpoints.of(context).isDesktop ? 3 : 2,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 44,
-                ),
-                child: Text(
-                  experience.description,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+          Expanded(
+            flex: 6,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 44,
+              ),
+              child: Text(
+                experience.description,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
@@ -281,8 +280,11 @@ class EducationTile extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ResponsiveBreakpoints.of(context).isDesktop ? 250 : 380,
       margin: const EdgeInsets.all(32),
+      padding: EdgeInsets.only(
+        top: designPaddingCenter,
+        bottom: designPaddingCenter,
+      ),
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
         boxShadow: [
@@ -293,17 +295,15 @@ class EducationTile extends HookWidget {
           ),
         ],
       ),
-      child: ResponsiveRowColumn(
-        layout: ResponsiveBreakpoints.of(context).isDesktop
-            ? ResponsiveRowColumnType.ROW
-            : ResponsiveRowColumnType.COLUMN,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ResponsiveRowColumnItem(
-            child: Flexible(
-              flex: ResponsiveBreakpoints.of(context).isDesktop ? 2 : 1,
+          Expanded(
+            flex: 4,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: designPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
                     children: [
@@ -335,7 +335,7 @@ class EducationTile extends HookWidget {
                       ),
                     ],
                   ),
-                  24.ph,
+                  12.ph,
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 30,
@@ -350,7 +350,7 @@ class EducationTile extends HookWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        12.ph,
+                        6.ph,
                         Text(
                           experience.major,
                           style: const TextStyle(
@@ -358,7 +358,7 @@ class EducationTile extends HookWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        12.ph,
+                        6.ph,
                         Text(
                           experience.location,
                           style: const TextStyle(
@@ -373,20 +373,19 @@ class EducationTile extends HookWidget {
               ),
             ),
           ),
-          ResponsiveRowColumnItem(
-            child: Flexible(
-              flex: ResponsiveBreakpoints.of(context).isDesktop ? 3 : 1,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 44,
-                ),
-                child: Text(
-                  experience.description,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+          Expanded(
+            flex: 6,
+            child: Padding(
+              padding: EdgeInsets.only(
+                right: designPadding,
+                top: designPadding,
+                bottom: designPadding,
+              ),
+              child: Text(
+                experience.description,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),

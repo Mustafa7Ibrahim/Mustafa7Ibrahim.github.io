@@ -26,7 +26,6 @@ class Wrapper extends HookWidget {
         const ResumeScreen(),
         const ProjectsScreen(),
         const ArticlesScreen(),
-        // const Center(child: Text('CONTACT')),
       ];
     });
     return Scaffold(
@@ -70,7 +69,7 @@ class Wrapper extends HookWidget {
                     ),
                     SizedBox(
                       child: Text(
-                        'Flutter Developer',
+                        'Senior Flutter Developer',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.w300,
                             ),
@@ -138,7 +137,6 @@ class Wrapper extends HookWidget {
         create: (context) => PortfolioBloc()..add(const LoadPortfolioEvent()),
         child: SafeArea(
           child: TabBarView(
-            physics: const NeverScrollableScrollPhysics(),
             controller: controller,
             children: pages,
           ),

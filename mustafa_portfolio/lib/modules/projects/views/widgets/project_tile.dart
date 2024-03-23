@@ -28,7 +28,7 @@ class ProjectTile extends HookWidget {
     final carouselController = useMemoized(CarouselController.new);
     return Container(
       constraints: const BoxConstraints(maxWidth: 1000, maxHeight: 350),
-      margin: const EdgeInsets.all(12),
+      margin: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
         boxShadow: [
