@@ -5,23 +5,65 @@ final class PortfolioState {
   /// projects state constructor
   const PortfolioState({
     this.status = PortfolioStatus.loading,
-    this.portfolio,
+    this.aboutMe,
+    this.articles = const [],
+    this.experiences = const [],
+    this.skills = const [],
+    this.educations = const [],
+    this.languages = const [],
+    this.certifications = const [],
+    this.projects = const [],
   });
 
   /// projects status
   final PortfolioStatus status;
 
-  /// projects list
-  final Portfolio? portfolio;
+  /// about me
+  final AboutMe? aboutMe;
+
+  /// articles
+  final List<Article> articles;
+
+  /// experiences
+  final List<Experience> experiences;
+
+  /// skills
+  final List<String> skills;
+
+  /// educations
+  final List<Education> educations;
+
+  /// languages
+  final List<Language> languages;
+
+  /// certifications
+  final List<Certification> certifications;
+
+  /// projects
+  final List<Project> projects;
 
   /// projects state copy with
   PortfolioState copyWith({
     PortfolioStatus? status,
-    Portfolio? portfolio,
+    AboutMe? aboutMe,
+    List<Article>? articles,
+    List<Experience>? experiences,
+    List<String>? skills,
+    List<Education>? educations,
+    List<Language>? languages,
+    List<Certification>? certifications,
+    List<Project>? projects,
   }) {
     return PortfolioState(
       status: status ?? this.status,
-      portfolio: portfolio ?? this.portfolio,
+      aboutMe: aboutMe ?? this.aboutMe,
+      articles: articles ?? this.articles,
+      experiences: experiences ?? this.experiences,
+      skills: skills ?? this.skills,
+      educations: educations ?? this.educations,
+      languages: languages ?? this.languages,
+      certifications: certifications ?? this.certifications,
+      projects: projects ?? this.projects,
     );
   }
 }

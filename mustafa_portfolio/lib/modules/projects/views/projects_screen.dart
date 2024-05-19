@@ -61,7 +61,7 @@ class ProjectsScreen extends HookWidget {
                               vertical: 14,
                             ),
                             child: Text(
-                              state.portfolio?.portfolioHeader ?? '',
+                              state.aboutMe?.portfolioHeader ?? '',
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
@@ -72,10 +72,10 @@ class ProjectsScreen extends HookWidget {
                           ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: state.portfolio?.projects.length,
+                            itemCount: state.projects.length,
                             itemBuilder: (context, index) {
                               return ProjectTile(
-                                project: state.portfolio!.projects[index],
+                                project: state.projects[index],
                               );
                             },
                           ),

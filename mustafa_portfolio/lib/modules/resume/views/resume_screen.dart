@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
-import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
-import 'package:mustafa_portfolio/core/core_data/my_data_model.dart';
 import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/fottor.dart';
 import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
+import 'package:mustafa_portfolio/modules/resume/widgets/education_tile.dart';
+import 'package:mustafa_portfolio/modules/resume/widgets/experience_tile.dart';
+import 'package:mustafa_portfolio/modules/resume/widgets/skills_languages.dart';
 
 /// projects screen
 class ResumeScreen extends HookWidget {
@@ -76,7 +77,7 @@ class ResumeScreen extends HookWidget {
                                 const Spacer(),
                                 ElevatedButton(
                                   onPressed: () {
-                                    final link = state.portfolio?.cv;
+                                    final link = state.aboutMe?.cv;
                                     if (link == null) {
                                       return;
                                     }
@@ -93,10 +94,10 @@ class ResumeScreen extends HookWidget {
                           ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: state.portfolio?.experience.length,
+                            itemCount: state.experiences.length,
                             itemBuilder: (context, index) {
                               return ExperienceTile(
-                                experience: state.portfolio!.experience[index],
+                                experience: state.experiences[index],
                               );
                             },
                           ),
@@ -122,14 +123,17 @@ class ResumeScreen extends HookWidget {
                           ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: state.portfolio?.education.length,
+                            itemCount: state.educations.length,
                             itemBuilder: (context, index) {
                               return EducationTile(
-                                experience: state.portfolio!.education[index],
+                                experience: state.educations[index],
                               );
                             },
                           ),
-                          Skills(portfolio: state.portfolio!),
+                          Skills(
+                            languages: state.languages,
+                            skills: state.skills,
+                          ),
                         ],
                       ),
                     ),
@@ -140,370 +144,6 @@ class ResumeScreen extends HookWidget {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-/// project tile
-class ExperienceTile extends HookWidget {
-  /// project tile constructor
-  const ExperienceTile({
-    required this.experience,
-    super.key,
-  });
-
-  /// experience
-  final Experience experience;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(32),
-      padding: EdgeInsets.only(
-        top: designPaddingCenter,
-        bottom: designPaddingCenter,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 10,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 4,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: designPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 44,
-                        width: 8,
-                        color: AppColors.blueColor,
-                      ),
-                      24.pw,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            experience.duration,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.blueColor,
-                            ),
-                          ),
-                          4.ph,
-                          Text(
-                            experience.position,
-                            style: const TextStyle(
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  12.ph,
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          experience.company,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        12.ph,
-                        Text(
-                          experience.location,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 6,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
-                vertical: 44,
-              ),
-              child: Text(
-                experience.description,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// project tile
-class EducationTile extends HookWidget {
-  /// project tile constructor
-  const EducationTile({
-    required this.experience,
-    super.key,
-  });
-
-  /// experience
-  final Education experience;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(32),
-      padding: EdgeInsets.only(
-        top: designPaddingCenter,
-        bottom: designPaddingCenter,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 10,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 4,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: designPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 44,
-                        width: 8,
-                        color: AppColors.blueColor,
-                      ),
-                      24.pw,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            experience.duration,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.blueColor,
-                            ),
-                          ),
-                          4.ph,
-                          Text(
-                            experience.school,
-                            style: const TextStyle(
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  12.ph,
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          experience.degree,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        6.ph,
-                        Text(
-                          experience.major,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        6.ph,
-                        Text(
-                          experience.location,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 6,
-            child: Padding(
-              padding: EdgeInsets.only(
-                right: designPadding,
-                top: designPadding,
-                bottom: designPadding,
-              ),
-              child: Text(
-                experience.description,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// project tile
-class Skills extends HookWidget {
-  /// project tile constructor
-  const Skills({
-    required this.portfolio,
-    super.key,
-  });
-
-  /// experience
-  final Portfolio portfolio;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(32),
-      margin: const EdgeInsets.all(32),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 10,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Professional skillset',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          24.ph,
-          Wrap(
-            children: [
-              for (final skill in portfolio.skills)
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  child: SkillTile(skill: skill),
-                ),
-            ],
-          ),
-          44.ph,
-          const Text(
-            'Languages',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          24.ph,
-          Wrap(
-            alignment: WrapAlignment.center,
-            children: [
-              for (final skill in portfolio.languages)
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  child: SkillTile(
-                    skill: '${skill.name} (${skill.proficiency})',
-                  ),
-                ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// Skill tile
-class SkillTile extends StatelessWidget {
-  /// Skill tile constructor
-  const SkillTile({required this.skill, super.key});
-
-  /// skill
-  final String skill;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 14,
-            width: 14,
-            color: AppColors.blueColor,
-          ),
-          12.pw,
-          Text(
-            skill,
-            style: const TextStyle(
-              fontSize: 14,
-            ),
-          ),
-        ],
       ),
     );
   }

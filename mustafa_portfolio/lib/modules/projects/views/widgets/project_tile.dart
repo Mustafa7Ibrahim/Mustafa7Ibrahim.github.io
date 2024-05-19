@@ -9,7 +9,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mustafa_portfolio/core/assets/assets.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
-import 'package:mustafa_portfolio/core/core_data/my_data_model.dart';
+import 'package:mustafa_portfolio/core/core_data/project_model.dart';
 import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
 
 /// project tile

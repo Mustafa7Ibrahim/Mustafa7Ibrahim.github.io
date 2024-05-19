@@ -33,7 +33,7 @@ class MainButtons extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    final link = state.portfolio?.cv;
+                    final link = state.aboutMe?.cv;
                     if (link == null) {
                       return;
                     }
