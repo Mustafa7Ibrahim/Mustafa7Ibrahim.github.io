@@ -36,8 +36,8 @@ class AppTheme {
           iconSize: 36,
         ),
         radioTheme: RadioThemeData(
-          fillColor: MaterialStateProperty.all(AppColors.primaryColor),
-          overlayColor: MaterialStateProperty.all(AppColors.primaryColor),
+          fillColor: WidgetStateProperty.all(AppColors.primaryColor),
+          overlayColor: WidgetStateProperty.all(AppColors.primaryColor),
           splashRadius: 24,
         ),
         tabBarTheme: TabBarTheme(
@@ -143,8 +143,6 @@ class AppTheme {
           onSecondary: AppColors.secondaryColor,
           error: AppColors.redColor,
           onError: AppColors.backgroundColor,
-          background: AppColors.backgroundColor,
-          onBackground: Colors.black,
           surface: AppColors.backgroundColor,
           onSurface: Colors.black,
         ),

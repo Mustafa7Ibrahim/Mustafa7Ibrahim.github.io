@@ -47,7 +47,6 @@ class ProjectTile extends HookWidget {
               padding: const EdgeInsets.symmetric(vertical: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -59,7 +58,6 @@ class ProjectTile extends HookWidget {
                       24.pw,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             project.name,
