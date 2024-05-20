@@ -1,8 +1,11 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
-import 'package:mustafa_portfolio/core/core_data/my_data_model.dart';
+import 'package:mustafa_portfolio/core/core_data/about_me_model.dart';
+import 'package:mustafa_portfolio/core/core_data/article_model.dart';
+import 'package:mustafa_portfolio/core/core_data/certification_model.dart';
+import 'package:mustafa_portfolio/core/core_data/education_model.dart';
+import 'package:mustafa_portfolio/core/core_data/experience_model.dart';
+import 'package:mustafa_portfolio/core/core_data/language_model.dart';
+import 'package:mustafa_portfolio/core/core_data/project_model.dart';
 import 'package:mustafa_portfolio/modules/projects/repository/data_repository.dart';
 
 part 'portfolio_event.dart';
@@ -27,13 +30,27 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
 
   Future<void> _loadProjects(Emitter<PortfolioState> emit) async {
     emit(state.copyWith(status: PortfolioStatus.loading));
-    final data = await dataRepo.getData();
-    log(data.toString());
+    final aboutMe = await dataRepo.getAboutMe();
+    final articles = await dataRepo.getArticles();
+    final experiences = await dataRepo.getExperiences();
+    final skills = await dataRepo.getSkills();
+    final educations = await dataRepo.getEducations();
+    final languages = await dataRepo.getLanguages();
+    final certifications = await dataRepo.getCertifications();
+    final projects = await dataRepo.getProjects();
+
     // final data = Portfolio.fromJson(myData);
     emit(
       state.copyWith(
         status: PortfolioStatus.success,
-        portfolio: data,
+        aboutMe: aboutMe,
+        articles: articles,
+        experiences: experiences,
+        skills: skills,
+        educations: educations,
+        languages: languages,
+        certifications: certifications,
+        projects: projects,
       ),
     );
   }

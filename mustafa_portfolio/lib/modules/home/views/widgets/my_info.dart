@@ -1,8 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easix/easix.dart';
 import 'package:flutter/material.dart';
-import 'package:mustafa_portfolio/core/assets/assets.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
+import 'package:mustafa_portfolio/core/core_data/about_me_model.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/main_buttons.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/socials.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -12,11 +13,15 @@ class MyInfo extends StatelessWidget {
   /// my info widget
   const MyInfo({
     required this.tabController,
+    required this.aboutMe,
     super.key,
   });
 
   /// tab controller
   final TabController tabController;
+
+  /// about me
+  final AboutMe aboutMe;
 
   @override
   Widget build(BuildContext context) {
@@ -51,23 +56,23 @@ class MyInfo extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                         designRoundedRadius,
                       ),
-                      child: Image.asset(
-                        Assets.me,
+                      child: CachedNetworkImage(
+                        imageUrl: aboutMe.image,
                         width: 200,
                         height: 200,
-                        fit: BoxFit.cover,
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Center(
+                          child: CircularProgressIndicator(
+                            value: downloadProgress.progress,
+                          ),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                     designPadding.ph,
                     Text(
-                      'Mustafa',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Ibrahim',
+                      aboutMe.name,
                       style: Theme.of(context)
                           .textTheme
                           .headlineSmall
@@ -84,7 +89,7 @@ class MyInfo extends StatelessWidget {
                     designPadding.ph,
                     if (ResponsiveBreakpoints.of(context).isDesktop)
                       Text(
-                        'Flutter Developer',
+                        aboutMe.title,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               letterSpacing: 2,
                             ),
