@@ -1,66 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <base href="/" />
-    <meta charset="UTF-8" />
-    <title>mustafa_portfolio</title>
-    <meta
-      name="description"
-      content="A resource to help developers evaluate and use Flutter."
-    />
-    <link rel="manifest" href="manifest.json" />
+    <base href="$FLUTTER_BASE_HREF" />
 
-    <!-- Browser meta tags & icons -->
+    <meta charset="UTF-8" />
     <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="description" content="A new Flutter project." />
+
+    <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="mustafa_portfolio" />
     <link rel="apple-touch-icon" href="icons/Icon-192.png" />
-    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
 
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:400"
-      rel="stylesheet"
-      media="all"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Google+Sans:700"
-      rel="stylesheet"
-      media="all"
-    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-HBB5H8CECM"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-HBB5H8CECM");
-    </script>
+    <title>mustafa_portfolio</title>
+    <link rel="manifest" href="manifest.json" />
 
-    <!-- Renderer specifier -->
-    <script>
-      let searchParams = new URLSearchParams(window.location.search);
-      if (searchParams.has("renderer")) {
-        window.flutterWebRenderer = searchParams.get("renderer");
-        console.log(
-          searchParams.get("renderer") + " renderer requested in the URL"
-        );
-      }
-      // The value below is injected by flutter build, do not touch.
-      var serviceWorkerVersion = "{{flutter_service_worker_version}}";
-    </script>
-
-    <script src="flutter.js" defer></script>
-  </head>
-
-  <body>
     <style>
       body {
         background-color: #fff;
@@ -148,37 +106,18 @@
         }
       }
     </style>
-
-    <!-- Loading indicator -->
+  </head>
+  <body>
     <div id="preloader">
       <div id="loader"></div>
     </div>
 
+    <script src="flutter_bootstrap.js" async></script>
+
     <script>
-      window.addEventListener("load", function () {
-        var preloader = document.querySelector("#preloader");
-        _flutter.loader
-          .loadEntrypoint({
-            serviceWorker: {
-              serviceWorkerVersion: serviceWorkerVersion,
-            },
-          })
-          .then(function (engineInitializer) {
-            return engineInitializer.initializeEngine();
-          })
-          .then(function (appRunner) {
-            return appRunner.runApp();
-          })
-          .then(function (app) {
-            // Wait a few milliseconds so users can see the "zoooom" animation
-            // before getting rid of the "preloader" div.
-            window.setTimeout(function () {
-              preloader.style.display = "none";
-            }, 500);
-          });
+      window.addEventListener("flutter-first-frame", function () {
+        document.getElementById("preloader").style.display = "none";
       });
     </script>
-
-    <!-- App -->
   </body>
 </html>

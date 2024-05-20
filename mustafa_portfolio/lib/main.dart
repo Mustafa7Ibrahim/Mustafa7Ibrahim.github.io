@@ -12,7 +12,6 @@ void main() async {
     url: 'https://mhftedonkcimndfxziwl.supabase.co',
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1oZnRlZG9ua2NpbW5kZnh6aXdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYxNDU5MTMsImV4cCI6MjAzMTcyMTkxM30.u0jmrrxo_9hAWpGDflNDCQ3QB1llHtNK7T2v-W3N31Q',
-    debug: true,
   );
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
