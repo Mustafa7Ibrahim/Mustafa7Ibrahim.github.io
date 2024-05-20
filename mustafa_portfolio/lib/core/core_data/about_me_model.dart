@@ -12,6 +12,7 @@ class AboutMe {
     required this.github,
     required this.linkedin,
     required this.phone,
+    required this.title,
   });
 
   /// fromJson is a factory method that is used to convert json to model.
@@ -26,6 +27,7 @@ class AboutMe {
         github: json['github'] as String,
         linkedin: json['linkedin'] as String,
         phone: json['phone'] as String,
+        title: json['title'] as String,
       );
 
   /// name
@@ -58,6 +60,9 @@ class AboutMe {
   /// phone
   final String phone;
 
+  /// title
+  final String title;
+
   /// toJson is a method that is used to convert model to json.
   Map<String, dynamic> toJson() => {
         'name': name,
@@ -70,5 +75,6 @@ class AboutMe {
         'github': github,
         'linkedin': linkedin,
         'phone': phone,
+        'title': title,
       };
 }
