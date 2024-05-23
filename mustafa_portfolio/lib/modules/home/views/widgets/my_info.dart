@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/core/core_data/about_me_model.dart';
-import 'package:mustafa_portfolio/modules/home/views/widgets/main_buttons.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/socials.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 /// my info widget
 class MyInfo extends StatelessWidget {
@@ -87,17 +85,16 @@ class MyInfo extends StatelessWidget {
                       ),
                     ),
                     designPadding.ph,
-                    if (ResponsiveBreakpoints.of(context).isDesktop)
-                      Text(
-                        aboutMe.title,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              letterSpacing: 2,
-                            ),
-                      )
-                    else
-                      MainButtons(
-                        tabController: tabController,
-                      ),
+                    Text(
+                      aboutMe.title,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            letterSpacing: 2,
+                          ),
+                    ),
+                    // else
+                    //   MainButtons(
+                    //     tabController: tabController,
+                    //   ),
                   ],
                 ),
               ),
