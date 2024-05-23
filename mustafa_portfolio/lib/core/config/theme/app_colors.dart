@@ -6,13 +6,16 @@ class AppColors {
   static Color get backgroundColor => const Color(0xFFFFFFFF);
 
   /// This method is used to get primary color.
-  static Color get primaryColor => const Color.fromRGBO(230, 218, 206, 1);
+  static Color get primaryColor => const Color(0xffDBE6FF);
 
   /// This method is used to get surface color.
   static Color get surfaceColor => const Color.fromRGBO(245, 236, 230, 1);
 
+  /// This method is used to get on main color.
+  static Color get onMainColor => const Color(0xff140533);
+
   /// This method is used to get secondary color.
-  static Color get secondaryColor => const Color(0xFF292B56);
+  static Color get secondaryColor => const Color(0xFFF4EDFF);
 
   /// This method is used to get yellow color.
   static Color get yellowColor => const Color(0xffF0CF69);
