@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
-import 'package:mustafa_portfolio/modules/home/views/widgets/articles_section.dart';
-import 'package:mustafa_portfolio/modules/home/views/home_screen.dart';
+import 'package:mustafa_portfolio/modules/home/views/components/articles_section.dart';
+import 'package:mustafa_portfolio/modules/home/views/components/projects_section.dart';
 import 'package:mustafa_portfolio/modules/home/bloc/portfolio_bloc.dart';
-import 'package:mustafa_portfolio/modules/home/views/widgets/packages_section.dart';
+import 'package:mustafa_portfolio/modules/home/views/components/packages_section.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/resume_screen.dart';
 
 ///
@@ -29,10 +29,9 @@ class HomeWrapper extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useTabController(initialLength: 4);
-
     final homeKey = useMemoized(() => GlobalKey());
-    final resumeKey = useMemoized(() => GlobalKey());
+    final projectsKey = useMemoized(() => GlobalKey());
+    final aboutMeKey = useMemoized(() => GlobalKey());
     final packagesKay = useMemoized(() => GlobalKey());
     final articlesKey = useMemoized(() => GlobalKey());
 
@@ -65,7 +64,7 @@ class HomeWrapper extends HookWidget {
                   const Spacer(),
                   TextButton(
                     onPressed: () {
-                      goToWidgetByTag(homeKey);
+                      goToWidgetByTag(projectsKey);
                     },
                     child: const Text('Work'),
                   ),
@@ -117,17 +116,19 @@ class HomeWrapper extends HookWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  HomeScreen(
+                  ProjectsSection(
                     key: homeKey,
-                    tabController: controller,
+                    projectsKey: projectsKey,
                     projects: state.projects,
+                    onTapWork: () => goToWidgetByTag(projectsKey),
+                    onTapAbout: () => goToWidgetByTag(aboutMeKey),
                   ),
                   PackagesSection(
                     key: packagesKay,
                     packages: state.packages,
                   ),
                   ResumeScreen(
-                    key: resumeKey,
+                    key: aboutMeKey,
                     state: state,
                   ),
                   ArticlesScreen(
