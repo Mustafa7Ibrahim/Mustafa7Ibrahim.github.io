@@ -61,19 +61,18 @@ class AppTheme {
               borderRadius: BorderRadius.circular(designRadius),
             ),
             padding: EdgeInsets.symmetric(
-              horizontal: designPadding * 1.5,
-              vertical: designPaddingCenter,
+              horizontal: designPadding,
+              vertical: designPadding22,
             ),
-            shadowColor: const Color(0xff6C5DD3),
             elevation: 0,
             foregroundColor: Colors.white,
             disabledForegroundColor: Colors.white,
             disabledBackgroundColor: const Color(0xff94A3B8),
-            backgroundColor: AppColors.blueColor,
+            backgroundColor: AppColors.onMainColor,
           ),
         ),
         cupertinoOverrideTheme: CupertinoThemeData(
-          primaryColor: AppColors.primaryColor,
+          primaryColor: AppColors.onMainColor,
           barBackgroundColor: AppColors.backgroundColor,
           scaffoldBackgroundColor: AppColors.backgroundColor,
           textTheme: const CupertinoTextThemeData(
@@ -129,10 +128,19 @@ class AppTheme {
             ),
             padding: EdgeInsets.symmetric(
               horizontal: designPadding,
-              vertical: designPaddingCenter,
+              vertical: designPadding22,
             ),
             side: const BorderSide(),
-            foregroundColor: Colors.black,
+            foregroundColor: AppColors.onMainColor,
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.symmetric(
+              horizontal: designPaddingCenter,
+            ),
+            foregroundColor: AppColors.onMainColor,
+            shape: StadiumBorder(),
           ),
         ),
         colorScheme: ColorScheme(
