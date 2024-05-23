@@ -8,18 +8,23 @@ import 'package:mustafa_portfolio/modules/home/views/widgets/project_item.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/title_icon_widget.dart';
 
 /// home view for the app
-class HomeScreen extends HookWidget {
+class ProjectsSection extends HookWidget {
   /// home view for the app
-  const HomeScreen({
-    required this.tabController,
-    super.key,
+  const ProjectsSection({
+    required this.projectsKey,
     required this.projects,
+    required this.onTapWork,
+    required this.onTapAbout,
+    super.key,
   });
 
-  /// tab controller
-  final TabController tabController;
-
   final List<Project> projects;
+
+  final GlobalKey projectsKey;
+
+  final VoidCallback onTapWork;
+
+  final VoidCallback onTapAbout;
 
   @override
   Widget build(BuildContext context) {
@@ -83,12 +88,12 @@ class HomeScreen extends HookWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: onTapWork,
                                 child: const Text('My work'),
                               ),
                               designPadding22.pw,
                               OutlinedButton(
-                                onPressed: () {},
+                                onPressed: onTapAbout,
                                 child: const Text('About me'),
                               ),
                             ],
@@ -97,6 +102,7 @@ class HomeScreen extends HookWidget {
                       ),
                     ),
                     ProjectItem(
+                      key: projectsKey,
                       size: size,
                       index: index,
                       project: projects[index],
