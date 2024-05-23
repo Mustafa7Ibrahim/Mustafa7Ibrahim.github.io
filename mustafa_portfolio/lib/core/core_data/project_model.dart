@@ -11,6 +11,7 @@ class Project {
     required this.appGalleryLink,
     required this.pubDevLink,
     required this.images,
+    required this.logo,
   });
 
   /// Creates a new instance of the [Project] class from a JSON object.
@@ -25,6 +26,7 @@ class Project {
       appGalleryLink: json['app_gallery_link'] as String?,
       githubLink: json['github_link'] as String?,
       images: List<String>.from(json['images'] as List<dynamic>),
+      logo: json['logo'] as String?,
     );
   }
 
@@ -54,4 +56,7 @@ class Project {
 
   /// The list of images associated with the project.
   List<String> images;
+
+  /// logo
+  String? logo;
 }
