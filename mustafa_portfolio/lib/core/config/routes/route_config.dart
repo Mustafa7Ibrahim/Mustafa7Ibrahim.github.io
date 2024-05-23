@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mustafa_portfolio/core/config/wrapper/wrapper.dart';
+import 'package:mustafa_portfolio/modules/home/views/home_wrapper.dart';
 
 /// Global navigator key to be used by [GoRouter].
 final _globalNavigatorKey = GlobalKey<NavigatorState>();
@@ -22,7 +22,7 @@ class RouteConfig {
     routes: <GoRoute>[
       GoRoute(
         path: '/',
-        builder: (context, state) => const Wrapper(),
+        builder: (context, state) => const HomeWrapper(),
       ),
       // GoRoute(
       //   path: '/about',
