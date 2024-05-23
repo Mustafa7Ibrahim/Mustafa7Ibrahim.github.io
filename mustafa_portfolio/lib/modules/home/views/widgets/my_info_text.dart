@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/core/core_data/about_me_model.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/main_buttons.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 ///
 class MyInfoText extends StatelessWidget {
@@ -57,10 +56,9 @@ class MyInfoText extends StatelessWidget {
                 ?.copyWith(fontWeight: FontWeight.w500),
           ),
           designPadding.ph,
-          if (ResponsiveBreakpoints.of(context).isDesktop)
-            MainButtons(
-              tabController: tabController,
-            ),
+          MainButtons(
+            tabController: tabController,
+          ),
           Text(
             aboutMe.bio,
             style: Theme.of(context)
