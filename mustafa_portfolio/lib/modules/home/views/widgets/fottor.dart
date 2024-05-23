@@ -2,7 +2,6 @@ import 'package:easix/easix.dart';
 import 'package:flutter/material.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/modules/home/views/widgets/socials.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 /// footer
 class Footer extends StatelessWidget {
@@ -14,87 +13,86 @@ class Footer extends StatelessWidget {
     return Container(
       color: Colors.white,
       padding: EdgeInsets.all(designPadding),
-      child: ResponsiveBreakpoints.of(context).isDesktop
-          ? Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  '© 2023 Mustafa Ibrahim All Rights Reserved',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w300,
-                      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            '© 2023 Mustafa Ibrahim All Rights Reserved',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w300,
                 ),
-                const Spacer(),
-                const FooterItem(title: 'Call', value: '+201116613745'),
-                designPadding.pw,
-                const FooterItem(
-                  title: 'Write',
-                  value: 'mustafa7ibrahim@gmail.com',
-                ),
-                designPadding.pw,
-                Column(
-                  children: [
-                    const Text(
-                      'Follow',
-                    ),
-                    designPaddingCenter.ph,
-                    const Socials(isFooter: true),
-                  ],
-                ),
-                designPadding.ph,
-              ],
-            )
-          : Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Call',
-                          ),
-                          designPaddingCenter.ph,
-                          const SelectableText(
-                            '+201116613745\n',
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Write',
-                          ),
-                          designPaddingCenter.ph,
-                          const SelectableText(
-                            'Mustafa7ibrahim@gmail.com',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                designPaddingCenter.ph,
-                const Text(
-                  'Follow',
-                ),
-                designPaddingCenter.ph,
-                const Socials(isFooter: true),
-                designPadding.ph,
-                const Text(
-                  '© 2023 Mustafa Ibrahim All Rights Reserved',
-                ),
-              ],
-            ),
+          ),
+          const Spacer(),
+          const FooterItem(title: 'Call', value: '+201116613745'),
+          designPadding.pw,
+          const FooterItem(
+            title: 'Write',
+            value: 'mustafa7ibrahim@gmail.com',
+          ),
+          designPadding.pw,
+          Column(
+            children: [
+              const Text(
+                'Follow',
+              ),
+              designPaddingCenter.ph,
+              const Socials(isFooter: true),
+            ],
+          ),
+          designPadding.ph,
+        ],
+      ),
+      // : Column(
+      //     mainAxisSize: MainAxisSize.min,
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       Row(
+      //         children: [
+      //           Expanded(
+      //             child: Column(
+      //               mainAxisSize: MainAxisSize.min,
+      //               crossAxisAlignment: CrossAxisAlignment.start,
+      //               children: [
+      //                 const Text(
+      //                   'Call',
+      //                 ),
+      //                 designPaddingCenter.ph,
+      //                 const SelectableText(
+      //                   '+201116613745\n',
+      //                 ),
+      //               ],
+      //             ),
+      //           ),
+      //           Expanded(
+      //             child: Column(
+      //               mainAxisSize: MainAxisSize.min,
+      //               crossAxisAlignment: CrossAxisAlignment.start,
+      //               children: [
+      //                 const Text(
+      //                   'Write',
+      //                 ),
+      //                 designPaddingCenter.ph,
+      //                 const SelectableText(
+      //                   'Mustafa7ibrahim@gmail.com',
+      //                 ),
+      //               ],
+      //             ),
+      //           ),
+      //         ],
+      //       ),
+      //       designPaddingCenter.ph,
+      //       const Text(
+      //         'Follow',
+      //       ),
+      //       designPaddingCenter.ph,
+      //       const Socials(isFooter: true),
+      //       designPadding.ph,
+      //       const Text(
+      //         '© 2023 Mustafa Ibrahim All Rights Reserved',
+      //       ),
+      //     ],
+      //   ),
     );
   }
 }
