@@ -6,17 +6,26 @@ import 'package:flutter/material.dart';
 Size size = PlatformDispatcher.instance.views.first.physicalSize /
     PlatformDispatcher.instance.views.first.devicePixelRatio;
 
-/// the padding of the design is set to 24
-double designPadding = 24;
+/// the padding of the design is set to 44
+double designPadding = 44;
+
+/// the padding of the design is set to 22
+double designPadding22 = 26;
 
 /// the padding of the design is set to 12
 double designPaddingCenter = 12;
 
+/// padding 20
+double designPadding20 = 20;
+
 /// the padding of the design is set to 6
 double designPaddingBetween = 6;
 
+/// DESIGN RADIUS 44
+double designRadius44 = 44;
+
 /// the radius of the design is set to 18
-double designRadius = 18;
+double designRadius = 112;
 
 /// the radius of the design is set to 150
 double designRoundedRadius = 150;
