@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mustafa_portfolio/core/config/theme/sizes.dart';
 import 'package:mustafa_portfolio/core/helpers/url_helper.dart';
-import 'package:mustafa_portfolio/modules/projects/bloc/portfolio_bloc.dart';
+import 'package:mustafa_portfolio/modules/home/bloc/portfolio_bloc.dart';
 
 /// main buttons for resume and projects
 class MainButtons extends StatelessWidget {
