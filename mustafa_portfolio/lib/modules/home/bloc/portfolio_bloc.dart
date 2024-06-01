@@ -1,3 +1,4 @@
+
 import 'package:bloc/bloc.dart';
 import 'package:mustafa_portfolio/core/core_data/about_me_model.dart';
 import 'package:mustafa_portfolio/core/core_data/article_model.dart';
@@ -41,7 +42,6 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     final projects = await dataRepo.getProjects();
     final packages = await dataRepo.getPackages();
 
-    // final data = Portfolio.fromJson(myData);
     emit(
       state.copyWith(
         status: PortfolioStatus.success,

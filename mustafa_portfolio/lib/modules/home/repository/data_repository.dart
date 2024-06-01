@@ -1,5 +1,4 @@
 // import 'package:firebase_database/firebase_database.dart';
-import 'dart:developer';
 
 import 'package:easix/easix.dart';
 import 'package:mustafa_portfolio/core/core_data/about_me_model.dart';
@@ -20,7 +19,6 @@ class DataRepository {
   Future<List<Article>> getArticles() async {
     final response = await _supabase.from('articles').select();
     final articles = getTypeList(response, Article.fromJson);
-    log('articles: ${articles.first.name}');
     return articles;
   }
 
@@ -28,7 +26,6 @@ class DataRepository {
   Future<List<Project>> getProjects() async {
     final response = await _supabase.from('projects').select();
     final projects = getTypeList(response, Project.fromJson);
-    log('projects: ${projects.first.name}');
     return projects;
   }
 
@@ -36,7 +33,6 @@ class DataRepository {
   Future<List<Experience>> getExperiences() async {
     final response = await _supabase.from('experience').select();
     final experiences = getTypeList(response, Experience.fromJson);
-    log('experiences: ${experiences.first.company}');
     return experiences;
   }
 
@@ -54,7 +50,6 @@ class DataRepository {
   Future<List<Education>> getEducations() async {
     final response = await _supabase.from('education').select();
     final educations = getTypeList(response, Education.fromJson);
-    log('educations: ${educations.first.school}');
     return educations;
   }
 
@@ -62,7 +57,6 @@ class DataRepository {
   Future<List<Language>> getLanguages() async {
     final response = await _supabase.from('languages').select();
     final languages = getTypeList(response, Language.fromJson);
-    log('languages: ${languages.first.name}');
     return languages;
   }
 
