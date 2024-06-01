@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mustafa_portfolio/core/config/theme/app_colors.dart';
@@ -11,19 +10,7 @@ class AppTheme {
         scaffoldBackgroundColor: AppColors.backgroundColor,
         brightness: Brightness.light,
         useMaterial3: false,
-        bottomSheetTheme: const BottomSheetThemeData(
-          backgroundColor: Colors.transparent,
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: AppColors.backgroundColor,
-          elevation: 0,
-          centerTitle: false,
-          titleSpacing: 0,
-          titleTextStyle: GoogleFonts.cairo(
-            fontSize: 22,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        fontFamily: 'satoshi',
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: AppColors.backgroundColor,
           foregroundColor: AppColors.primaryColor,
@@ -40,48 +27,44 @@ class AppTheme {
           overlayColor: WidgetStateProperty.all(AppColors.primaryColor),
           splashRadius: 24,
         ),
-        tabBarTheme: TabBarTheme(
-          labelColor: AppColors.blueColor,
-          unselectedLabelColor: Colors.black38,
-          labelPadding: EdgeInsets.symmetric(horizontal: designPaddingCenter),
-          indicatorSize: TabBarIndicatorSize.tab,
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          elevation: 0,
-          enableFeedback: true,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          selectedIconTheme: IconThemeData(color: AppColors.primaryColor),
-          unselectedIconTheme: const IconThemeData(color: Color(0xff94A3B8)),
-        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(designRadius),
             ),
+            minimumSize: Size(0, 50),
             padding: EdgeInsets.symmetric(
-              horizontal: designPadding,
-              vertical: designPadding22,
+              horizontal: designPaddingBetween,
             ),
             elevation: 0,
             foregroundColor: Colors.white,
             disabledForegroundColor: Colors.white,
             disabledBackgroundColor: const Color(0xff94A3B8),
-            backgroundColor: AppColors.onMainColor,
+            backgroundColor: AppColors.primaryColor,
           ),
         ),
-        cupertinoOverrideTheme: CupertinoThemeData(
-          primaryColor: AppColors.onMainColor,
-          barBackgroundColor: AppColors.backgroundColor,
-          scaffoldBackgroundColor: AppColors.backgroundColor,
-          textTheme: const CupertinoTextThemeData(
-            navTitleTextStyle: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(designRadius),
             ),
+            minimumSize: Size(0, 50),
+            padding: EdgeInsets.symmetric(
+              horizontal: designPaddingCenter,
+            ),
+            side: const BorderSide(),
+            foregroundColor: AppColors.primaryColor,
           ),
-          applyThemeToAll: true,
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            minimumSize: Size(0, 50),
+            padding: EdgeInsets.symmetric(
+              horizontal: designPaddingCenter,
+            ),
+            foregroundColor: AppColors.primaryColor,
+            shape: StadiumBorder(),
+          ),
         ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
@@ -102,54 +85,32 @@ class AppTheme {
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(designRadius),
             borderSide: BorderSide(
-              color: AppColors.redColor,
+              color: Colors.red,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(designRadius),
             borderSide: BorderSide(
-              color: AppColors.redColor,
+              color: Colors.red,
             ),
           ),
           errorStyle: GoogleFonts.cairo(
             fontSize: 14,
             fontWeight: FontWeight.w400,
-            color: AppColors.redColor,
+            color: Colors.red,
           ),
           hintStyle: GoogleFonts.cairo(
             fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(designRadius),
-            ),
-            padding: EdgeInsets.symmetric(
-              horizontal: designPadding,
-              vertical: designPadding22,
-            ),
-            side: const BorderSide(),
-            foregroundColor: AppColors.onMainColor,
-          ),
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            padding: EdgeInsets.symmetric(
-              horizontal: designPaddingCenter,
-            ),
-            foregroundColor: AppColors.onMainColor,
-            shape: StadiumBorder(),
-          ),
-        ),
         colorScheme: ColorScheme(
           brightness: Brightness.light,
           primary: AppColors.primaryColor,
-          onPrimary: Colors.black,
+          onPrimary: AppColors.textPrimaryColor,
           secondary: AppColors.secondaryColor,
-          onSecondary: AppColors.secondaryColor,
-          error: AppColors.redColor,
+          onSecondary: AppColors.textPrimaryColor,
+          error: Colors.red,
           onError: AppColors.backgroundColor,
           surface: AppColors.backgroundColor,
           onSurface: Colors.black,
