@@ -6,31 +6,28 @@ import 'package:flutter/material.dart';
 Size size = PlatformDispatcher.instance.views.first.physicalSize /
     PlatformDispatcher.instance.views.first.devicePixelRatio;
 
-/// the padding of the design is set to 44
-double designPadding = 44;
+/// the padding of the design is set to 132
+double designPadding = 132;
 
-/// the padding of the design is set to 22
-double designPadding22 = 26;
+/// padding section
+double designPaddingSection = 67;
 
-/// the padding of the design is set to 12
-double designPaddingCenter = 12;
+/// the padding of the design is set to 14
+double designPaddingCenter = 14;
 
-/// padding 20
-double designPadding20 = 20;
+/// the padding of the design is set to 24
+double designPaddingBetween = 24;
 
-/// the padding of the design is set to 6
-double designPaddingBetween = 6;
+/// the radius of the design is set to 24
+double designRadius = 24;
 
-/// DESIGN RADIUS 44
-double designRadius44 = 44;
-
-/// the radius of the design is set to 18
-double designRadius = 112;
+/// the radius of the design is set to 48
+double designRadiusBig = 66;
 
 /// the radius of the design is set to 150
 double designRoundedRadius = 150;
 
-///This method is used to get device viewport width.
+/// This method is used to get device viewport width.
 double get width => size.width;
 
 ///This method is used to get device viewport height.
