@@ -11,7 +11,6 @@ import 'package:mustafa_portfolio/modules/home/views/widgets/title_icon_widget.d
 class ProjectsSection extends HookWidget {
   /// home view for the app
   const ProjectsSection({
-    required this.projectsKey,
     required this.projects,
     required this.onTapWork,
     required this.onTapAbout,
@@ -19,8 +18,6 @@ class ProjectsSection extends HookWidget {
   });
 
   final List<Project> projects;
-
-  final GlobalKey projectsKey;
 
   final VoidCallback onTapWork;
 
@@ -34,83 +31,23 @@ class ProjectsSection extends HookWidget {
       itemCount: projects.length,
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      separatorBuilder: (context, index) => designPadding.ph,
+      separatorBuilder: (context, index) => designPaddingSection.ph,
       itemBuilder: (context, index) {
         if (index == 0) {
-          return SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(designPadding),
-                      constraints: BoxConstraints(
-                        minHeight: size.height,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(designRadius),
-                        gradient: LinearGradient(
-                          colors: [
-                            AppColors.primaryColor,
-                            AppColors.secondaryColor,
-                            Colors.white,
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          tileMode: TileMode.decal,
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          (designPadding * 2).ph,
-                          TitleIconWidget(
-                            title: "Hi, I'm Mustafa",
-                            icon: "👋",
-                          ),
-                          designPadding22.ph,
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: width * 0.14,
-                            ),
-                            child: Text(
-                              'I develop mobile apps, and websites that blows your mind',
-                              style: context.textTheme.displayMedium?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          designPadding22.ph,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ElevatedButton(
-                                onPressed: onTapWork,
-                                child: const Text('My work'),
-                              ),
-                              designPadding22.pw,
-                              OutlinedButton(
-                                onPressed: onTapAbout,
-                                child: const Text('About me'),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    ProjectItem(
-                      key: projectsKey,
-                      size: size,
-                      index: index,
-                      project: projects[index],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          return Stack(
+            children: [
+              ProjectHeader(
+                size: size,
+                width: width,
+                onTapWork: onTapWork,
+                onTapAbout: onTapAbout,
+              ),
+              ProjectItem(
+                size: size,
+                index: index,
+                project: projects[index],
+              ),
+            ],
           );
         } else {
           return ProjectItem(
@@ -120,6 +57,82 @@ class ProjectsSection extends HookWidget {
           );
         }
       },
+    );
+  }
+}
+
+class ProjectHeader extends StatelessWidget {
+  const ProjectHeader({
+    super.key,
+    required this.size,
+    required this.width,
+    required this.onTapWork,
+    required this.onTapAbout,
+  });
+
+  final Size size;
+  final double width;
+  final VoidCallback onTapWork;
+  final VoidCallback onTapAbout;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 34),
+      constraints: BoxConstraints(
+        minHeight: 1000,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        gradient: LinearGradient(
+          colors: [
+            // AppColors.secondaryColor,
+            AppColors.surfaceColor,
+            AppColors.backgroundColor,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
+      child: Column(
+        children: [
+          designPaddingSection.ph,
+          TitleIconWidget(
+            title: "Hi, I'm Mustafa",
+            icon: "👋",
+            showBorder: true,
+          ),
+          designPaddingCenter.ph,
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: width * 0.14,
+            ),
+            child: Text(
+              'I develop mobile apps, and websites that blows your mind',
+              style: context.textTheme.displayMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          designPaddingSection.ph,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: onTapWork,
+                child: const Text('My work'),
+              ),
+              designPaddingCenter.pw,
+              OutlinedButton(
+                onPressed: onTapAbout,
+                child: const Text('About me'),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

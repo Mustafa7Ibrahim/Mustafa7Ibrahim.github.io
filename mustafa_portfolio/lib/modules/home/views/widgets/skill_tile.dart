@@ -21,7 +21,7 @@ class SkillTile extends StatelessWidget {
           Container(
             height: 14,
             width: 14,
-            color: AppColors.blueColor,
+            color: AppColors.primaryColor,
           ),
           12.pw,
           Text(

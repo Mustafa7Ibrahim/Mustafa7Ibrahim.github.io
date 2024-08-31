@@ -22,21 +22,18 @@ class ProjectItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        left: designPadding * 3,
-        right: designPadding * 3,
-        top: index == 0 ? size.height * .7 : 0,
+        left: designPadding,
+        right: designPadding,
+        top: index == 0 ? 450 : 0,
       ),
-      padding: EdgeInsets.symmetric(
-        vertical: designPadding,
-        horizontal: designPadding * 2,
-      ),
+      padding: EdgeInsets.all(designPaddingSection),
       constraints: BoxConstraints(
-        minHeight: size.height * 0.8,
+        minHeight: 500,
         minWidth: size.width,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(designRadius44),
-        color: index.isOdd ? AppColors.secondaryColor : AppColors.primaryColor,
+        borderRadius: BorderRadius.circular(designRadiusBig),
+        color: index.isOdd ? AppColors.secondaryColor : AppColors.surfaceColor,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(.08),
@@ -55,8 +52,8 @@ class ProjectItem extends StatelessWidget {
                     if (project.logo != null)
                       CachedNetworkImage(
                         imageUrl: project.logo!,
-                        width: 32,
-                        height: 32,
+                        width: 24,
+                        height: 24,
                       ),
                     if (project.logo != null) designPaddingCenter.pw,
                     Text(
@@ -66,22 +63,20 @@ class ProjectItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                designPadding.ph,
-                designPadding.ph,
                 Text(
                   'MOBILE APPLICATION',
                   style: context.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-                designPadding.ph,
+                designPaddingSection.ph,
                 Text(
                   project.description,
                   style: context.textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                designPadding.ph,
+                designPaddingSection.ph,
                 Row(
                   children: [
                     ElevatedButton(
@@ -95,7 +90,6 @@ class ProjectItem extends StatelessWidget {
           ),
           designPadding.pw,
           ImageFrameWidget(project: project, size: size),
-          designPadding.pw,
         ],
       ),
     );

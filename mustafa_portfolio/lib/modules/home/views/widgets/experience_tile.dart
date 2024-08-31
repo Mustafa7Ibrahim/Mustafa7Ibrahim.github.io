@@ -49,7 +49,7 @@ class ExperienceTile extends HookWidget {
                       Container(
                         height: 44,
                         width: 8,
-                        color: AppColors.blueColor,
+                        color: AppColors.primaryColor,
                       ),
                       24.pw,
                       Column(
@@ -60,7 +60,7 @@ class ExperienceTile extends HookWidget {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.blueColor,
+                              color: AppColors.primaryColor,
                             ),
                           ),
                           4.ph,
