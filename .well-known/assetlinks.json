@@ -1,9 +1,14 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.warix.fin_folio",
-    "sha256_cert_fingerprints":
-    ["FD:44:95:00:7E:98:6F:D0:5B:60:76:83:BE:3C:8A:96:E5:E6:3A:39:72:9D:08:32:DE:BF:2F:A7:2A:B3:7F:1E"]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.warix.fin_folio",
+      "sha256_cert_fingerprints": [
+        "FD:44:95:00:7E:98:6F:D0:5B:60:76:83:BE:3C:8A:96:E5:E6:3A:39:72:9D:08:32:DE:BF:2F:A7:2A:B3:7F:1E"
+      ]
+    }
   }
-}]
+]
